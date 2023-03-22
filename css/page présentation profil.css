@@ -32,7 +32,7 @@ h2
 
 h3
 {
-    margin: 0 0 0 4%;
+    margin: 0 0 0 8%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -94,15 +94,19 @@ border: 2px;
 background: #FBE216;
 }
 
-.top
-{
-}
-
 .cadrejaunerech
 {
     
 margin: 2% 20%;
 background: #FBE216;
+border-radius: 50px;
+}
+
+.cadregris
+{
+    
+margin: 2% 20%;
+background: #d6d6d6;
 border-radius: 50px;
 }
 
