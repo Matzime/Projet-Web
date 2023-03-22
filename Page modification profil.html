@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/page présentation profil.css">
+    <link rel="stylesheet" href="./css/page modification profil.css">
     <meta charset="UTF-8" />
     <title>Stage Xplorer</title>
 </head>
@@ -35,45 +35,32 @@
         </section>
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
-            <div class="text" ><textarea type="text" class="text"></textarea></div>
+            <div class="text"><input type="text"/></div>
 
             <div class="image"><img src="./image/badge.png" alt="mail" class="png" /></div>
-            <div class="text" ><textarea type="text" class="cadremodif"></textarea></div>
+            <div class="text" >                
+            Role :
+            <select>
+                <option>promo1</option>
+                <option>promo2</option>				
+            </select>
+        </div>
 
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" ><textarea type="text" class="cadremodif"></textarea></div>
+            <div class="text" ><input type="text"/></div>
 
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" ><textarea type="text" class="cadremodif"></textarea></div>
-        </section>
-        <section>
-            <div>
-                <h2>Décris-toi !</h2>
-            </div>
-            <div>
-                <textarea type="text" class="cadretext"></textarea>
-            </div>
-        </section>
-        <section>
-            <div>
-                <h2>Wish-list</h2>
-            </div>
-            <div class ="cadregris">
-                <h3>Nom Poste</h3>
-                <div class="image"><img src="./image/entreprise.png" alt="mail" class="png" /></div>
-                <div class="text" >Entreprise</div>
-                <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-                <div class="text" >Argent</div>
-                <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-                <div class="text" >Adresse</div>
-                <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                <div class="text" >Durée</div>
+            <div class="text" >
+                Campus :
+            <select>
+                <option>Centre1</option>
+                <option>Centre2</option>				
+            </select>
             </div>
         </section>
         <section style="align-items: center;text-align: center;">        
-            <button class="buttonsub" type="submit"><b>+ Compte</b></button>
-            <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-            <button class="buttonsub" type="submit"><b>Modifier</b></button>
+            <button class="buttonsub" type="submit"><b>Annuler</b></button>
+            <button class="buttonsub" type="submit"><b>Valider</b></button>
         </section>
     </main>
     
