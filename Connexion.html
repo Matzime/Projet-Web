@@ -30,24 +30,22 @@
     <div class="cadreconnexion">
         <h1 class="connexion">Connexion</h1>
 
+        <form action="authentification.php" method="post">
             <ul class="removep">
                 <li>
                     <h4 class="textecadre">Adresse email</h4>
-                    <input class="inputcadre" type="text"/>
+                    <input class="inputcadre" type="text" name="login"/>
                 </li>
                 <li>
                     <h4 class="textecadre">Mot de passe</h4>
-                    <input class="inputcadre" type="text"/>
+                    <input class="inputcadre" type="password" name="password"/>
                 </li>
             </ul>
 
-
-        <input class="checkbox" type="checkbox"><b>                              Se souvenir de moi</b></input>
-
-        <button class="buttonsub" type="submit"><b>SE CONNECTER</b></button>
-
+            <input class="checkbox" type="checkbox" name="remember_me"><b>Se souvenir de moi</b></input>
+            <button class="buttonsub" type="submit"><b>SE CONNECTER</b></button>
+        </form>
     </div>
-
 </body>
 <footer class="footer">
     <div class="flex">
