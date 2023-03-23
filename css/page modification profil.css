@@ -76,7 +76,14 @@ border-radius: 50px;
 .nomprenom
 {
     display: inline-block;
-    width: 20%;
+    width: 30%;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 150%;
+    line-height: 35px;
+    letter-spacing: 0.05em;
+    border-radius: 60px;
 }
 
 .profil
