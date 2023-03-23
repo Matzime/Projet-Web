@@ -50,3 +50,20 @@ border-radius: 50px;
     width: 50%;
 }
 
+.txtresultat{
+    font-size: 200%;
+    margin: 1% 21%;
+}
+
+.button{
+    border-radius: 30px;
+    background: #FBE216;
+    width: 7%;
+    font-size: 150%;
+    border: none;
+    margin: 1% 21%;
+}
+
+.entreprise{
+    margin-right: 20%;
+}
