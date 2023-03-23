@@ -113,11 +113,49 @@ border-radius: 50px;
     text-align: center;
 }
 
-.image{
+.buttonenvoyer
+{
+    border-radius: 30px;
+    position:relative;
+    height: 10%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    font:bold;
+    padding: 7px 0;
+    background: #FBE216;
+    display: inline-block;
+    width: 9%;
+    margin: 2% 0 2% 2%;
+}
+
+.image
+{
     display: inline-block;
     width: 9%;
     margin: 2% 0 2% 5%;
 }
+
+.nombre
+{
+    display: inline-block;
+    width: 9%;
+    margin: 2% 0 2% 0%;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+.p
+{
+
+    display: inline-block;
+    width: 9%;
+    margin: 2% 0 2% 2%;
+}
+
+
+
 .cadrejaunerech p.trouveoffre
 {
 

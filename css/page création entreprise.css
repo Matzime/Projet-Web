@@ -78,6 +78,25 @@ letter-spacing: 0.05em;
 color: #000000;
 }
 
+.nombre
+{
+    display: inline-block;
+    width: 9%;
+    margin: 2% 0 0% 5%;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+}
+
+.p
+{
+
+    display: inline-block;
+    width: 9%;
+    margin: 2% 0 2% 2%;
+}
+
 .text input
 {
     
