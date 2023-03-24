@@ -127,5 +127,16 @@ select {
     display:flex;
 }
 
+.bienv{
+    position: flex;
+    margin-left: 8%;
+    margin-top: 7%;
+    font-size: 240%;
+    display: inline-block;
+    background:#FBE216;
+    padding: 1px 10px;
+
+}
+
 
 
