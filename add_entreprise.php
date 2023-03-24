@@ -4,7 +4,7 @@ require_once 'data_base_connexion.php';
 // Récupérer les données du formulaire d'inscription
 $nom_entreprise = $_POST['nom_entreprise'];
 $secteur_act = $_POST['secteur_act'];
-$confiance = $_POST['confiance'];
+$confiance_pilote = $_POST['confiance_pilote'];
 
 //Récupération, décomposition et validation de l'adresse
 $adresse = urlencode($_POST['adresse']); // Encodage de l'adresse pour la requête
@@ -52,9 +52,9 @@ if ($stmt1->execute()) {
 $stmt1->close();
 
 // Deuxième requête SQL
-$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, Secteur_Activite, ID_Adresse) VALUES (?, ?, ?, ?)";
+$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, Secteur_Activite, confiance_pilote, ID_Adresse) VALUES (?, ?, ?, ?, ?)";
 $stmt2 = $conn->prepare($sql2);
-$stmt2->bind_param('issi', $ID_entreprise, $nom_entreprise, $secteur_act, $ID_Adresse);
+$stmt2->bind_param('issii', $ID_entreprise, $nom_entreprise, $secteur_act, $confiance_pilote, $ID_adresse);
 
 if ($stmt2->execute()) {
     echo "Entreprise ajoutée avec succès.";
