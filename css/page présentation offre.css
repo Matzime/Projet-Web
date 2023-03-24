@@ -32,7 +32,7 @@ h2
 
 h3
 {
-    margin: 0 0 0 8%;
+    margin: 0 0 0 5%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -115,21 +115,25 @@ border-radius: 50px;
 
 .skill
 {
+    margin : 2% 2% 3% 0%;
+    display: inline-block;
     border-radius: 30px;
     width: 10%;
     position:relative;
     height: 10%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border:none;
-    margin-left:5%;
-    margin-right:5%;
     font:bold;
-    margin-top: 5%;
-    margin-bottom: 5%;
     padding: 7px 0;
     background: #FBE216;
     align-items: center;
     text-align: center;
+}
+
+.skills
+{
+    margin-left:5%;
+    margin-right:5%;
 }
 
 .buttonenvoyer
