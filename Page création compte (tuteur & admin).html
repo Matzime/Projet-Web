@@ -27,27 +27,44 @@
     </header>
 
     <main>
-        <form action="Ajouter_utilisateur.php" method="post" class="cadrejaunerech">
-            <div ><h1 class="trouveoffre">Création de compte</h1></div>
-            <p><div><h3 class="trouveoffre">Prénom</h3></div></p>
-            <div class="text"><input type="text" name="prenom"/></div>
-            <p><div><h3 class="trouveoffre">Nom</h3></div></p>
-            <div class="text"><input type="text" name="nom"/></div>
-            <p><div><h3 class="trouveoffre">Adresse email</h3></div></p>
-            <div class="text"><input type="text" name="mail"/></div>
-            <p><div><h3 class="trouveoffre">Mot de passe</h3></div></p>
-            <div class="text"><input type="text" name="password"/></div>
-            <p><div><h3 class="trouveoffre">Confirmation mot de passe</h3></div></p>
-            <div class="text"><input type="text" name="passwordVerif"/></div>
-            <p><div><h3 class="trouveoffre">Role</h3></div></p>
-            <div class="list">
-                <select name="role">
-                    <option value="Pilote">Pilote</option>
-                    <option value="Etudiant">Etudiant</option>				
-                </select>
-           </div> 
-            <div class="submit"><input type="submit" value="Valider"></div>
+        <div class="cadreconnexion">
+        <form action="Ajouter_utilisateur.php" method="post">
+            <h1 class="titre">Crée ton compte</h1>
+
+            <ul class="removep">
+                <li>
+                    <h4 class="textecadre">Prénom</h4>
+                    <input class="inputcadre" type="text" name="prenom"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Nom</h4>
+                    <input class="inputcadre" type="text" name="nom"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Adresse email</h4>
+                    <input class="inputcadre" type="text" name="mail"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Mot de passe</h4>
+                    <input class="inputcadre" type="password" name="password"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Confirmation mot de passe</h4>
+                    <input class="inputcadre" type="password" name="passwordVerif"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Rôle</h4>
+                    <div class="list">
+                        <select name="role">
+                            <option value="Pilote">Pilote</option>
+                            <option value="Etudiant">Etudiant</option>				
+                        </select>
+                   </div> 
+                </li>
+            </ul>
+            <button class="buttonsub" type="submit"><b>VALIDER</b></button>
         </form>
+    </div>
     </main>
     
     <footer class="footer">
