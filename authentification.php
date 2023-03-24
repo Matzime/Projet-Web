@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
 
     // Vérifier le mot de passe
-    if ($MDP == $user['MDP']) {
+    if (password_verify($MDP, $user['MDP'])) {
         // Les identifiants sont corrects
         echo "Connexion réussie. Bienvenue, " . $user['Mail'] . "!";
         // Vérifiez si la case "Se souvenir de moi" a été cochée
