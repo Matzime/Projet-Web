@@ -3,8 +3,9 @@ require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
 $nom_entreprise = $_POST['nom_entreprise'];
-$secteur_act = $_POST['secteur_act'];
+$secteur = $_POST['secteur_act'];
 $confiance_pilote = $_POST['confiance_pilote'];
+
 
 //Récupération, décomposition et validation de l'adresse
 $adresse = urlencode($_POST['adresse']); // Encodage de l'adresse pour la requête
@@ -52,9 +53,9 @@ if ($stmt1->execute()) {
 $stmt1->close();
 
 // Deuxième requête SQL
-$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, Secteur_Activite, ID_Adresse) VALUES (?, ?, ?, ?)";
+$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, ID_Competence, ID_Adresse) VALUES (?, ?, ?, ?)";
 $stmt2 = $conn->prepare($sql2);
-$stmt2->bind_param('issi', $ID_entreprise, $nom_entreprise, $secteur_act, $ID_adresse);
+$stmt2->bind_param('isi', $ID_entreprise, $nom_entreprise, $ID_adresse);
 
 if ($stmt2->execute()) {
     echo "Entreprise ajoutée avec succès.";
@@ -62,17 +63,38 @@ if ($stmt2->execute()) {
     echo "Une erreur est survenue lors de l'ajout de l'entreprise : " . $conn->error;
 }
 
-// Troisième requête SQL
-$sql2 = "INSERT INTO evaluer (ID_Entreprise, Nom, Secteur_Activite, ID_Adresse) VALUES (?, ?, ?, ?)";
-$stmt2 = $conn->prepare($sql2);
-$stmt2->bind_param('issii', $ID_entreprise, $nom_entreprise, $secteur_act, $ID_adresse);
+// troisième requête SQL
+$sql3 = "INSERT INTO evaluer (ID_Entreprise, ID_Utilisateur, Evaluation) VALUES (?, ?, ?)";
+$stmt3 = $conn->prepare($sql3);
+$stmt3->bind_param('iii', $ID_entreprise, $ID_Utilisateur, $confiance_pilote);
 
 if ($stmt2->execute()) {
     echo "Entreprise ajoutée avec succès.";
 } else {
     echo "Une erreur est survenue lors de l'ajout de l'entreprise : " . $conn->error;
 }
-$stmt2->close();
+//Secteur d'activité (semblable à compétence), comparé pour voir si la competence existe déjà ou non
+$stmt = $conn->prepare("SELECT ID_Competence, Competence FROM competence WHERE Competence LIKE CONCAT('%', ?, '%')");
+$stmt->bind_param("s", $secteur);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // La compétence existe déjà, récupérer son ID
+    $row = $result->fetch_assoc();
+    $ID_Competence = $row['ID_Competence'];
+} else {
+    // La compétence n'existe pas, insérer une nouvelle compétence et récupérer son ID
+    $stmt = $conn->prepare("INSERT INTO competence (Competence) VALUES (?)");
+    $stmt->bind_param("s", $secteur);
+    $stmt->execute();
+    $ID_Competence = $stmt->insert_id;
+}
+
+// Mettre à jour l'entreprise avec l'ID de la compétence
+$stmt = $conn->prepare("UPDATE entreprise SET ID_Competence = ? WHERE ID_Entreprise = ?");
+$stmt->bind_param("ii", $ID_Competence, $ID_entreprise);
+$stmt->execute();
 
 ?>
 
