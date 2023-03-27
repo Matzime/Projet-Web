@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <form method="post" action="recherche_offres.php"></form>
     <header>
         <nav class="menu">
         <div class="m-left">
@@ -28,10 +29,6 @@
 
     <p class="bienv"><b>BIENVENUE SUR STAGE XPLORER...</b></p>
     <div class="cadrejaunerech">
-        <div class="Recherche">
-            <p class="trouveoffre">Trouver l'offre dont vous avez besoin </p>
-            <input type="search" class="search" placeholder="Votre recherche : Developper, Architecte..."/>
-        </div>
         <div class="Type">
             <p class="trouveoffre">Vous cherchez...</p>
             <select name="quietesvous">
@@ -50,10 +47,7 @@
         </div>
         <div class="Type">
             <p class="trouveoffre">Ville :</p>
-            <select name="quietesvous">
-                <option>Ville 1</option>
-                <option>Ville 2</option>
-            </select>
+            <input type="search" class="search"/>
         </div>
         <div class="Type">
             <p class="trouveoffre">Durée :</p>
@@ -80,6 +74,7 @@
         <button class="buttonsub" type="submit"><b>+ Compte</b></button>
         <button class="buttonsub" type="submit"><b>+ Entreprise</b></button>
         <button class="buttonsub" type="submit"><b>+ Offre</b></button>
+        <button class="buttonsub" type="submit"><b>Rechercher</b></button>
     </section>
 </body>
 
