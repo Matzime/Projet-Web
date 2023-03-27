@@ -3,6 +3,7 @@ html, body{
     font-family: 'Tw Cen MT';
 
 }
+
 body{
     background-repeat: no-repeat;
     width: 100%;
@@ -13,7 +14,9 @@ body{
 
 h3
 {
-    margin: 0 0 0 8%;
+    margin: 0 0 0 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -26,6 +29,25 @@ h3
 margin: 2% 20%;
 background: #d6d6d6;
 border-radius: 50px;
+}
+
+.cadrejaunepage
+{
+    border-radius: 30px;
+    width: 2%;
+    height: 2%;
+    position:relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    margin-left:5%;
+    margin-right:5%;
+    font:bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 7px 0;
+    background: #FBE216;
+    align-items: center;
+    text-align: center;
 }
 
 .image{
@@ -67,4 +89,28 @@ border-radius: 50px;
 
 .entreprise{
     margin-right: 20%;
+}
+
+.buttonsub
+{
+    border-radius: 30px;
+    width: 3%;
+    position:relative;
+    height: 10%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    margin-left:5%;
+    margin-right:5%;
+    font:bold;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 7px 0;
+    background: #FBE216;
+    align-items: center;
+    text-align: center;
+}
+
+.pages
+{
+    text-align: center;
 }
