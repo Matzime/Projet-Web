@@ -1,5 +1,5 @@
 <?php
-require_once 'connexion.php';
+require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
 $prenom = $_POST['prenom'];
