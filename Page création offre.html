@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/page création offre.css">
+    <meta charset="UTF-8" />
+    <title>Crée une offre</title>
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+        <div class="m-left">
+            <img class="logo" src="./image/logo.png" alt="logo" class="logo" />
+        </div>
+        <div class="m-right">
+            <a href="#" class="m-logo1"><img src="./image/Profil.png"></a>
+            <a href="#" class="m-logo2"><img src="./image/Bell.png"></a>
+        </div>
+
+        </nav>
+        <div class="yellowbar">
+        </div>
+    </header>
+
+    <main>
+        <div class="cadreconnexion">
+        <form action="Ajouter_utilisateur.php" method="post">
+            <h1 class="titre">Crée une offre</h1>
+
+            <ul class="removep">
+                <li>
+                    <h4 class="textecadre">Nom de l'offre</h4>
+                    <input class="inputcadre" type="text" name="prenom"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Adresse</h4>
+                    <input class="inputcadre" type="text" name="nom"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Salaire</h4>
+                    <input type="number" class="nombre"/>
+                    <p class="p">€<p>
+                </li>
+                <li>
+                    <h4 class="textecadre">Durée</h4>
+                    <input type="number" class="nombre"/>
+                    <select name="quietesvous" class="time">
+                        <option>Jours</option>
+                        <option>Semaines</option>
+                        <option>Mois</option>
+                    </select>
+                </li>
+                <li>
+                    <h4 class="textecadre">Nombre de places</h4>
+                    <input type="number" class="nombre"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Compétences</h4>
+                    <div class="skill">
+                        <b>Skill1</b>
+                    </div>
+                    <select name="quietesvous">
+                        <option>...</option>
+                        <option>Skill1</option>
+                        <option>Skill2</option>
+                    </select>
+                </li>
+            </ul>
+            <button class="buttonsub" type="submit"><b>VALIDER</b></button>
+        </form>
+    </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="flex">
+            <div class="margin" class="domaine" class="flex"> 
+                <p class="titre" class="pfooter">DOMAINES</p>
+                <p class="pfooter">BTP</p>
+                <p class="pfooter">Industrie</p>
+                <p class="pfooter">RH & Management</p>
+                <p class="pfooter">Informatique & Numérique</p>
+            </div>
+            <div class="margin" class="information" class="flex">
+                <p class="titre" class="pfooter">INFORMATIONS</p>
+                <p class="pfooter">Politique de confidentialitées</p>
+                <p class="pfooter">Mentions légales</p>
+                <p class="pfooter">CGU</p>
+            </div>
+            <div class="margin" >
+            <p class="titre" class="pfooter">L'ACTUALITÉ </p>
+            <div class="center"><a class="plink" href="https://www.linkedin.com/school/cesi-officiel/">Linkdin</a></div>
+            <div class="center"><a class="plink" href="https://mobile.twitter.com/cesi_officiel">Twitter</a></div>
+            <div class="center"><a class="plink" href="https://m.facebook.com/CESIingenieurs/events/">Facebook</a></div>
+            <div class="center"><a class="plink" href="https://www.instagram.com/cesi_officiel/?hl=fr">Instagram</a></div>
+            <div class="center"><a class="plink" href="https://www.youtube.com/channel/UCWanyqUivV6rjbTABGFI8pA">Youtube</a></div>
+            </div>
+        </div>
+        </footer>
+
+    </body>
+</html>
