@@ -41,6 +41,12 @@ h3
     color: #000000;
 }
 
+h4
+{
+    display: inline-block;
+    margin: 0 0 0 20%;
+}
+
 .cadrejaunerech
 {
 margin: 2% 20%;
@@ -116,9 +122,11 @@ border-radius: 50px;
 
 .buttonsub2
 {
+    margin-right: 5%;
+    margin-top: 5%;
     display: inline-block;
     border-radius: 30px;
-    width: 10%;
+    width: 5%;
     position:relative;
     height: 10%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -128,7 +136,23 @@ border-radius: 50px;
     background: #FBE216;
     align-items: center;
     text-align: center;
-    margin-bottom: 2%;
+    margin-left: 1%;
+}
+
+.buttonsub3
+{
+    display: inline-block;
+    border-radius: 30px;
+    width: 5%;
+    position:relative;
+    height: 10%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border:none;
+    font:bold;
+    padding: 7px 0;
+    background: #FBE216;
+    align-items: center;
+    text-align: center;
     margin-left: 1%;
 }
 
