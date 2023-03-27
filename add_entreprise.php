@@ -62,17 +62,20 @@ if ($stmt2->execute()) {
 } else {
     echo "Une erreur est survenue lors de l'ajout de l'entreprise : " . $conn->error;
 }
+$stmt2->close();
 
 // troisième requête SQL
 $sql3 = "INSERT INTO evaluer (ID_Entreprise, ID_Utilisateur, Evaluation) VALUES (?, ?, ?)";
 $stmt3 = $conn->prepare($sql3);
-$stmt3->bind_param('iii', $ID_entreprise, $ID_Utilisateur, $confiance_pilote);
+$stmt3->bind_param('iii', $ID_entreprise, $_SESSION['user_id'], $confiance_pilote);
 
-if ($stmt2->execute()) {
-    echo "Entreprise ajoutée avec succès.";
+if ($stmt3->execute()) {
+    echo "Evalutation ajouté avec succès.";
 } else {
-    echo "Une erreur est survenue lors de l'ajout de l'entreprise : " . $conn->error;
+    echo "Une erreur est survenue lors de l'ajout de l'évaluation : " . $conn->error;
 }
+$stmt3->close();
+
 //Secteur d'activité (semblable à compétence), comparé pour voir si la competence existe déjà ou non
 $stmt = $conn->prepare("SELECT ID_Competence, Competence FROM competence WHERE Competence LIKE CONCAT('%', ?, '%')");
 $stmt->bind_param("s", $secteur);
