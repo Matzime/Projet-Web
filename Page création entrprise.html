@@ -27,26 +27,36 @@
     </header>
 
     <main>
-        <form action="add_entreprise.php" method="post" class="cadrejaunerech">
-            <div ><h1 class="trouveoffre">Création d'une entreprise</h1></div>
-            <p><div><h3 class="trouveoffre">Nom entreprise</h3></div></p>
-            <div class="text"><input type="text" name="nom_entreprise"/></div>
-            <p><div><h3 class="trouveoffre">Secteur d'activité</h3></div></p>
-            <div class="list">
-                <select name="role">
-                    <option value="Pilote">Secteur 1</option>
-                    <option value="Etudiant">Secteur 2</option>				
-                </select>
-           </div> 
-            <p><div><h3 class="trouveoffre">Adresse</h3></div></p>
-            <div class="text"><input type="text" name="adresse"/></div>
-            <p><div><h3 class="trouveoffre">Confiance du pilote</h3></div></p>
-            <div>
-                <input type="number" class="nombre" name="confiance_pilote"/>
-                <p class="p">/5<p>
-            </div>
-            <div class="submit"><input type="submit" value="Valider"></div>
+        <div class="cadreconnexion">
+        <form action="add_entreprise.php" method="post">
+            <h1 class="titre">Crée ton entreprise</h1>
+
+            <ul class="removep">
+                <li>
+                    <h4 class="textecadre">Nom de l'entreprise</h4>
+                    <input class="inputcadre" type="text" name="nom_entreprise"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Secteur d'activité</h4>
+                    <div class="list">
+                    <select name="role">
+                        <option value="Pilote">Secteur 1</option>
+                        <option value="Etudiant">Secteur 2</option>				
+                    </select>
+                </div>
+                </li>
+                <li>
+                    <h4 class="textecadre">Adresse</h4>
+                    <input class="inputcadre" type="text" name="adresse"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Confiance du Pilote</h4>
+                    <input class="inputcadre" type="number" name="confiance_pilote" required pattern ="^[0-5]+$" placeholder="Notation sur 5"/>
+                </li>
+            </ul>
+            <button class="buttonsub" type="submit"><b>VALIDER</b></button>    
         </form>
+    </div>
     </main>
     
     <footer class="footer">
