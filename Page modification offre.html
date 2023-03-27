@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/page création entreprise.css">
+    <link rel="stylesheet" href="./css/page modification offre.css">
     <meta charset="UTF-8" />
-    <title>Crée ton entreprise</title>
+    <title>Stage Xplorer</title>
 </head>
 
 <body>
@@ -20,45 +20,64 @@
             <a href="#" class="m-logo1"><img src="./image/Profil.png"></a>
             <a href="#" class="m-logo2"><img src="./image/Bell.png"></a>
         </div>
-
         </nav>
         <div class="yellowbar">
         </div>
     </header>
 
     <main>
-        <div class="cadreconnexion">
-        <form action="add_entreprise.php" method="post">
-            <h1 class="titre">Crée ton entreprise</h1>
-
-            <ul class="removep">
-                <li>
-                    <h4 class="textecadre">Nom de l'entreprise</h4>
-                    <input class="inputcadre" type="text" name="nom_entreprise"/>
-                </li>
-                <li>
-                    <h4 class="textecadre">Secteur d'activité</h4>
-                    <div class="list">
-                    <select name="role">
-                        <option value="Pilote">Secteur 1</option>
-                        <option value="Etudiant">Secteur 2</option>				
-                    </select>
+        <section style="align-items: center;text-align: center;">
+            <div class="text">
+                <input type="text"/>
+             </div>
+            <div class="profil">
+                <img src="./image/Profil.png" alt="profil"/>
+            </div>
+        </section>
+        <div>
+            <h2>Informations :</h2>
+        </div>
+        <section class ="cadregris">
+            <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
+            <select name="quietesvous">
+                <option>Entreprise 1</option>
+                <option>Entreprise 2</option>
+            </select>
+            <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
+            <input type="number" class="nombre"/>
+            <p class="p">€<p>
+            <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
+            <div class="text">
+                <input type="text"/>
+            </div>
+            <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
+            <input type="number" class="nombre"/>
+            <select name="quietesvous" class="time">
+                <option>Jours</option>
+                <option>Semaines</option>
+                <option>Mois</option>
+            </select>
+            <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
+            <input type="number" class="nombre"/>
+            <p></p>
+            <div><h3>Compétences requises :</h3></div>
+            <div class="skills">
+                <div class="skill">
+                    <b>Skill1</b>
                 </div>
-                </li>
-                <li>
-                    <h4 class="textecadre">Adresse</h4>
-                    <input class="inputcadre" type="text" name="adresse"/>
-                </li>
-                <li>
-                    <h4 class="textecadre">Confiance du Pilote</h4>
-                    <input class="inputcadre" type="number" name="confiance_pilote" required pattern ="^[0-5]+$" placeholder="Notation sur 5"/>
-                </li>
-            </ul>
-            <button class="buttonsub" type="submit"><b>VALIDER</b></button>    
-        </form>
-    </div>
+                <select name="quietesvous">
+                    <option>...</option>
+                    <option>Skill1</option>
+                    <option>Skill2</option>
+                </select>
+            </div>
+
+        </section>
+        <section style="align-items: center;text-align: center;">        
+            <button class="buttonsub" type="submit"><b>Annuler</b></button>
+            <button class="buttonsub" type="submit"><b>Valider</b></button>
+        </section>
     </main>
-    
     <footer class="footer">
         <div class="flex">
             <div class="margin" class="domaine" class="flex"> 
@@ -84,6 +103,5 @@
             </div>
         </div>
         </footer>
-
     </body>
 </html>

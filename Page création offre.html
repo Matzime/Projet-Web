@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/page création entreprise.css">
+    <link rel="stylesheet" href="./css/page création offre.css">
     <meta charset="UTF-8" />
-    <title>Crée ton entreprise</title>
+    <title>Crée une offre</title>
 </head>
 
 <body>
@@ -28,33 +28,49 @@
 
     <main>
         <div class="cadreconnexion">
-        <form action="add_entreprise.php" method="post">
-            <h1 class="titre">Crée ton entreprise</h1>
+        <form action="Ajouter_utilisateur.php" method="post">
+            <h1 class="titre">Crée une offre</h1>
 
             <ul class="removep">
                 <li>
-                    <h4 class="textecadre">Nom de l'entreprise</h4>
-                    <input class="inputcadre" type="text" name="nom_entreprise"/>
-                </li>
-                <li>
-                    <h4 class="textecadre">Secteur d'activité</h4>
-                    <div class="list">
-                    <select name="role">
-                        <option value="Pilote">Secteur 1</option>
-                        <option value="Etudiant">Secteur 2</option>				
-                    </select>
-                </div>
+                    <h4 class="textecadre">Nom de l'offre</h4>
+                    <input class="inputcadre" type="text" name="prenom"/>
                 </li>
                 <li>
                     <h4 class="textecadre">Adresse</h4>
-                    <input class="inputcadre" type="text" name="adresse"/>
+                    <input class="inputcadre" type="text" name="nom"/>
                 </li>
                 <li>
-                    <h4 class="textecadre">Confiance du Pilote</h4>
-                    <input class="inputcadre" type="number" name="confiance_pilote" required pattern ="^[0-5]+$" placeholder="Notation sur 5"/>
+                    <h4 class="textecadre">Salaire</h4>
+                    <input type="number" class="nombre"/>
+                    <p class="p">€<p>
+                </li>
+                <li>
+                    <h4 class="textecadre">Durée</h4>
+                    <input type="number" class="nombre"/>
+                    <select name="quietesvous" class="time">
+                        <option>Jours</option>
+                        <option>Semaines</option>
+                        <option>Mois</option>
+                    </select>
+                </li>
+                <li>
+                    <h4 class="textecadre">Nombre de places</h4>
+                    <input type="number" class="nombre"/>
+                </li>
+                <li>
+                    <h4 class="textecadre">Compétences</h4>
+                    <div class="skill">
+                        <b>Skill1</b>
+                    </div>
+                    <select name="quietesvous">
+                        <option>...</option>
+                        <option>Skill1</option>
+                        <option>Skill2</option>
+                    </select>
                 </li>
             </ul>
-            <button class="buttonsub" type="submit"><b>VALIDER</b></button>    
+            <button class="buttonsub" type="submit"><b>VALIDER</b></button>
         </form>
     </div>
     </main>
