@@ -6,10 +6,7 @@ $enterprise = $_POST['enterprise'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
-$competence = $_POST['competence'];
-var_dump($competence);
-
-
+$skill = $_POST['skill'];
 
 //Récupération, décomposition et validation de l'adresse
 $address = urlencode($_POST['address']); // Encodage de l'adresse pour la requête
@@ -94,7 +91,6 @@ $stmt = $conn->prepare("SELECT ID_Competence FROM competence WHERE Competence LI
 $stmt->bind_param("s", $skill);
 $stmt->execute();
 $result = $stmt->get_result();
-var_dump($stmt);
 
 if ($result->num_rows > 0) {
     // La competence existe déjà, récupérer son ID
@@ -108,6 +104,7 @@ if ($result->num_rows > 0) {
 
     if ($stmt3->execute()) {
         echo "Competence ajoutée avec succès.";
+
     } else {
         echo "Une erreur est survenue lors de l'ajout de la competence : " . $conn->error;
     }
@@ -117,10 +114,5 @@ if ($result->num_rows > 0) {
     echo "La competence n'existe pas dans la base de données.";
     exit(); // arrête l'exécution du script
 }
-
-// Mettre à jour la table connaitre avec l'ID de la compétence
-$stmt = $conn->prepare("UPDATE connaitre SET ID_Competence = ? WHERE ID_offre = ?");
-$stmt->bind_param("ii", $ID_skill, $ID_job);
-$stmt->execute();
 
 ?>
