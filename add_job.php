@@ -6,14 +6,16 @@ $enterprise = $_POST['enterprise'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
-$skill = $_POST['skill'];
+$competence = $_POST['competence'];
+var_dump($competence);
+
 
 
 //Récupération, décomposition et validation de l'adresse
 $address = urlencode($_POST['address']); // Encodage de l'adresse pour la requête
 $apiKey = 'f7506853d19a4b5e9fa3382af20257f8'; 
 
-//Récupération date aujourd'hui
+//Récupération de la date d'aujourd'hui
 $datePublication = date("Y-m-d");
 
 // Effectuer une requête HTTP vers l'API Geocoding
@@ -25,7 +27,6 @@ curl_close($curl);
 
 // Décoder la réponse JSON
 $responseData = json_decode($response, true);
-
 if (isset($responseData['results'][0])) {
     $addressDetails = $responseData['results'][0]['components'];
     $road = $addressDetails['road'] ?? '';
@@ -41,15 +42,8 @@ if (isset($responseData['results'][0])) {
 $min = 10;
 $max = 1000000; // Vous pouvez définir la valeur maximale que vous souhaitez
 $randomNumber = mt_rand($min, $max);
-
 $ID_address=$randomNumber;
 $ID_job=$randomNumber;
-
-//Vérifier si l'entreprise existe
-$stmt = $conn->prepare("SELECT ID_Entreprise FROM entreprise WHERE nom LIKE CONCAT('%', ?, '%')");
-$stmt->bind_param("s", $enterprise);
-$stmt->execute();
-$result = $stmt->get_result();
 
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
@@ -65,6 +59,7 @@ if ($stmt1->execute()) {
 $stmt1->close();
 
 // Deuxième requête SQL
+//Vérifier si l'entreprise existe
 $stmt = $conn->prepare("SELECT ID_Entreprise FROM entreprise WHERE nom LIKE CONCAT('%', ?, '%')");
 $stmt->bind_param("s", $enterprise);
 $stmt->execute();
@@ -73,17 +68,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // L'entreprise existe déjà, récupérer son ID
     $row = $result->fetch_assoc();
-    $ID_enterprise = $row['ID_entreprise'];
-} else {
-    // L'entreprise n'existe pas, insérer une nouvelle entreprise et récupérer son ID
-    echo "Une erreur est survenue lors de la récupération de l'ID de l'entreprise : " . $conn->error;
-}
-
-
-if ($result->num_rows > 0) {
-    // L'entreprise existe déjà, récupérer son ID
-    $row = $result->fetch_assoc();
-    $ID_enterprise = $row['ID_entreprise'];
+    $ID_enterprise = $row['ID_Entreprise'];
 
     // Préparer la requête SQL pour ajouter l'offre
     $sql2 = "INSERT INTO offre (ID_offre, Duree_Offre, Remuneration_Offre, Date_Offre, Nbr_Places_Offre, ID_Entreprise) 
@@ -100,23 +85,40 @@ if ($result->num_rows > 0) {
 } else {
     // L'entreprise n'existe pas, afficher un message d'erreur
     echo "L'entreprise n'existe pas dans la base de données.";
+    exit(); // arrête l'exécution du script
 }
 
 // troisième requête SQL
-$sql3 = "INSERT INTO connaitre (ID_competences, ID_offre) VALUES (?, ?)";
-$stmt3 = $conn->prepare($sql3);
-$stmt3->bind_param('iii', $ID_skill, $ID_job);
+//Vérifier si la compétence existe
+$stmt = $conn->prepare("SELECT ID_Competence FROM competence WHERE Competence LIKE CONCAT('%', ?, '%')");
+$stmt->bind_param("s", $skill);
+$stmt->execute();
+$result = $stmt->get_result();
+var_dump($stmt);
 
-if ($stmt3->execute()) {
-    echo "Evalutation ajouté avec succès.";
+if ($result->num_rows > 0) {
+    // La competence existe déjà, récupérer son ID
+    $row = $result->fetch_assoc();
+    $ID_skill = $row['ID_Competence'];
+
+    // Préparer la requête SQL pour ajouter l'offre
+    $sql3 = "INSERT INTO connaitre (ID_Competence, ID_offre) VALUES (?, ?)";
+    $stmt3 = $conn->prepare($sql3);
+    $stmt3->bind_param('ii', $ID_skill, $ID_job);
+
+    if ($stmt3->execute()) {
+        echo "Competence ajoutée avec succès.";
+    } else {
+        echo "Une erreur est survenue lors de l'ajout de la competence : " . $conn->error;
+    }
+    $stmt->close();
 } else {
-    echo "Une erreur est survenue lors de l'ajout de l'évaluation : " . $conn->error;
+    // La competence n'existe pas, afficher un message d'erreur
+    echo "La competence n'existe pas dans la base de données.";
+    exit(); // arrête l'exécution du script
 }
-$stmt3->close();
 
-
-
-// Mettre à jour l'entreprise avec l'ID de la compétence
+// Mettre à jour la table connaitre avec l'ID de la compétence
 $stmt = $conn->prepare("UPDATE connaitre SET ID_Competence = ? WHERE ID_offre = ?");
 $stmt->bind_param("ii", $ID_skill, $ID_job);
 $stmt->execute();
