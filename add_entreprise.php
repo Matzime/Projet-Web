@@ -52,9 +52,20 @@ if ($stmt1->execute()) {
 $stmt1->close();
 
 // Deuxième requête SQL
-$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, Secteur_Activite, confiance_pilote, ID_Adresse) VALUES (?, ?, ?, ?, ?)";
+$sql2 = "INSERT INTO entreprise (ID_Entreprise, Nom, Secteur_Activite, ID_Adresse) VALUES (?, ?, ?, ?)";
 $stmt2 = $conn->prepare($sql2);
-$stmt2->bind_param('issii', $ID_entreprise, $nom_entreprise, $secteur_act, $confiance_pilote, $ID_adresse);
+$stmt2->bind_param('issi', $ID_entreprise, $nom_entreprise, $secteur_act, $ID_adresse);
+
+if ($stmt2->execute()) {
+    echo "Entreprise ajoutée avec succès.";
+} else {
+    echo "Une erreur est survenue lors de l'ajout de l'entreprise : " . $conn->error;
+}
+
+// Troisième requête SQL
+$sql2 = "INSERT INTO evaluer (ID_Entreprise, Nom, Secteur_Activite, ID_Adresse) VALUES (?, ?, ?, ?)";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->bind_param('issii', $ID_entreprise, $nom_entreprise, $secteur_act, $ID_adresse);
 
 if ($stmt2->execute()) {
     echo "Entreprise ajoutée avec succès.";

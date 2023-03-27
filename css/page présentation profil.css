@@ -33,7 +33,9 @@ h2
 
 h3
 {
-    margin: 0 0 0 8%;
+    margin: 0 0 0 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     display: flex;
     align-items: center;
     text-align: center;
