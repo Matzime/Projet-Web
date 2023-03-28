@@ -2,7 +2,7 @@
 require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
-$enterprise = $_POST['enterprise'];
+$enterprise = $_POST['enter'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
@@ -37,7 +37,7 @@ if (isset($responseData['results'][0])) {
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
 $sql1 = "UPDATE adresse (ID_Adresse, Num_rue, Nom_rue, Nom_ville, CP_Ville) 
-VALUES (?, ?, ?, ?, ?) WHERE ID_adresse =[...]";
+VALUES (?, ?, ?, ?, ?) WHERE ID_adresse =1";
 $stmt1 = $conn->prepare($sql1);
 $stmt1->bind_param('iissi', $ID_address, $number, $road, $town, $postCode);
 
@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
 
     // Préparer la requête SQL pour ajouter l'offre
     $sql2 = "UPDATE offre (ID_offre, Duree_Offre, Remuneration_Offre, Date_Offre, Nbr_Places_Offre, ID_Entreprise) 
-    VALUES (?, ?, ?, ?, ?, ?) WHERE ID_offre =[...]";
+    VALUES (?, ?, ?, ?, ?, ?) WHERE ID_offre =1";
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param('ididii', $ID_job, $period, $salary, $datePublication, $seats, $ID_enterprise);
 
@@ -91,7 +91,7 @@ if ($result->num_rows > 0) {
     $ID_skill = $row['ID_Competence'];
 
     // Préparer la requête SQL pour ajouter l'offre
-    $sql3 = "UPDATE connaitre (ID_Connaitre, ID_Competence, ID_offre) VALUES (?, ?) WHERE ID_Connaitre =[...]";
+    $sql3 = "UPDATE connaitre (ID_Connaitre, ID_Competence, ID_offre) VALUES (?, ?) WHERE ID_Connaitre =1";
     $stmt3 = $conn->prepare($sql3);
     $stmt3->bind_param('ii',$ID_know, $ID_skill, $ID_job);
 
