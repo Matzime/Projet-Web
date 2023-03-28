@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <form method="post" action="recherche_offres.php"></form>
     <header>
         <nav class="menu">
         <div class="m-left">
@@ -31,50 +30,52 @@
     <div class="cadrejaunerech">
         <div class="Type">
             <p class="trouveoffre">Vous cherchez...</p>
-            <select name="quietesvous">
+            <select name="butrecherche">
                 <option>Une offre</option>
                 <option>Une entreprise</option>
                 <option>Un étudiant</option>
                 <option>Un pilote</option>
             </select>
         </div>
+        <form method="post" action="recherche_offre.php">
         <div class="Type">
-            <p class="trouveoffre">Secteur :</p>
-            <select name="quietesvous">
-                <option>Secteur 1</option>
-                <option>Secteur 2</option>
-            </select>
+            <p class="trouveoffre">Competence :</p>
+            <input type="search" name="competence" class="trouveoffre"/>
         </div>
         <div class="Type">
             <p class="trouveoffre">Ville :</p>
-            <input type="search" class="search"/>
+            <input type="search" name="ville" class="trouveoffre"/>
         </div>
+        <p class="trouveoffre">Entreprise :</p>
+        <input type="search" name="entreprise" class="trouveoffre"/>
+    </div>
         <div class="Type">
             <p class="trouveoffre">Durée :</p>
             <div>
-                <select name="quietesvous">
-                    <option>-2 mois</option>
-                    <option>2 à 4 mois</option>
-                    <option>4 à 6 mois</option>
-                    <option>+6 mois</option>
+                <select name="duree">
+                    <option value="1">-2 mois</option>
+                    <option value="2">2 à 4 mois</option>
+                    <option value="3">4 à 6 mois</option>
+                    <option value="4">+6 mois</option>
                 </select>
             </div>
         </div>
         <div class="Type">
             <p class="trouveoffre">Publication :</p>
             <div>
-                <select name="quietesvous">
-                    <option>+ Récentes</option>
-                    <option>+ Anciennes</option>
+                <select name="publication">
+                    <option value=1>+ Récentes</option>
+                    <option value=0>+ Anciennes</option>
                 </select>
             </div>
         </div>
     </div> 
-    <section style="align-items: center;text-align: center;">        
+    <section style="align-items: center;text-align: center;">  
+        <button class="buttonsub" type="submit"><b>Rechercher</b></button>  </form>    
         <button class="buttonsub" type="submit"><b>+ Compte</b></button>
         <button class="buttonsub" type="submit"><b>+ Entreprise</b></button>
         <button class="buttonsub" type="submit"><b>+ Offre</b></button>
-        <button class="buttonsub" type="submit"><b>Rechercher</b></button>
+
     </section>
 </body>
 

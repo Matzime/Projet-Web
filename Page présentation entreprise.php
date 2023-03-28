@@ -1,3 +1,7 @@
+<?php
+$nameEnterprise = "Nom Entreprise"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
+setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/page présentation profil.css">
+    <link rel="stylesheet" href="./css/page présentation entreprise.css">
     <meta charset="UTF-8" />
-    <title>Profil</title>
+    <title>Entreprise</title>
 </head>
 
 <body>
@@ -29,7 +33,7 @@
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1>Nom Prénom</h1>
+                <h1>Nom Entreprise</h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -38,39 +42,47 @@
         <div>
             <h2>Informations :</h2>
         </div>
-        <section class ="cadrejaunerech">
-            <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
-            <div class="text" >ExempleMail@mail.fr</div>
-            <div class="image"><img src="./image/badge.png" alt="mail" class="png" /></div>
-            <div class="text" >Status : Promo</div>
+        <section class ="cadregris">
+            <div class="image"><img src="./image/gear.png" alt="mail" class="png" /></div>
+            <div class="text" >Secteur d'activité</div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
             <div class="text" >Adresse</div>
-            <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" >Campus</div>
+            <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
+            <div class="text" >Nbr personne accepté</div>
+            <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
+            <div class="text" >Confiance pilote/5</div>
         </section>
         <section>
             <div>
-                <h2>Wish-list :</h2>
+                <h2>Evaluations :</h2>
+            </div>
+            <div class ="cadrejaunerech">
+                <div class="image"><img src="./image/Profil.png" alt="mail" class="png" /></div>
+                <div class="text" >Etudiant</div>
+                <div class="image"><img src="./image/malette.png" alt="mail" class="png" /></div>
+                <div class="text" >Poste</div>
+                <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
+                <div class="text" >Durée</div>
+                <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
+                <div class="text" >Evaluation/5</div>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h2>Evaluer l'entreprise ?</h2>
             </div>
             <div class ="cadregris">
-                <form action="delete_wishlist.php">
-                    <h3>Nom Poste</h3>
-                    <div class="image"><img src="./image/entreprise.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Entreprise</div>
-                    <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Argent</div>
-                    <button class="buttonsub2" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
-                    <p></p>
-                    <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Adresse</div>
-                    <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Durée</div>
+                <form action="evaluate.php">
+                    <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
+                    <input type="number" class="nombre" name="evaluation"/>
+                    <p class="p">/5<p>
+                    <button class="buttonenvoyer" type="submit"><b>Envoyer</b></button>
                 </form>
             </div>
         </section>
         <section style="align-items: center;text-align: center;">        
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-            <button class="buttonsub" type="submit"><b>Modifier</b></button>
+            <form action="Page modification entreprise.html" method="get"><button class="buttonsub" type="submit"><b>Modifier</b></button></form>
         </section>
     </main>
     
@@ -99,6 +111,6 @@
             </div>
         </div>
         </footer>
-
     </body>
 </html>
+

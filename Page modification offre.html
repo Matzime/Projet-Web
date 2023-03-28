@@ -26,57 +26,44 @@
     </header>
 
     <main>
-        <section style="align-items: center;text-align: center;">
-            <div class="text">
-                <input type="text"/>
-             </div>
-            <div class="profil">
-                <img src="./image/Profil.png" alt="profil"/>
-            </div>
-        </section>
-        <div>
-            <h2>Informations :</h2>
-        </div>
-        <section class ="cadregris">
-            <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <select name="quietesvous">
-                <option>Entreprise 1</option>
-                <option>Entreprise 2</option>
-            </select>
-            <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-            <input type="number" class="nombre"/>
-            <p class="p">€<p>
-            <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text">
-                <input type="text"/>
-            </div>
-            <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-            <input type="number" class="nombre"/>
-            <select name="quietesvous" class="time">
-                <option>Jours</option>
-                <option>Semaines</option>
-                <option>Mois</option>
-            </select>
-            <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
-            <input type="number" class="nombre"/>
-            <p></p>
-            <div><h3>Compétences requises :</h3></div>
-            <div class="skills">
-                <div class="skill">
-                    <b>Skill1</b>
+        <form action="update_job.php">
+            <section style="align-items: center;text-align: center;">
+                <div class="nomprenom">
+                    <h1>Nom Offre</h1>
                 </div>
-                <select name="quietesvous">
-                    <option>...</option>
-                    <option>Skill1</option>
-                    <option>Skill2</option>
-                </select>
+            </section>
+            <div>
+                <h2>Informations :</h2>
             </div>
-
-        </section>
-        <section style="align-items: center;text-align: center;">        
-            <button class="buttonsub" type="submit"><b>Annuler</b></button>
-            <button class="buttonsub" type="submit"><b>Valider</b></button>
-        </section>
+            <section class ="cadregris">
+                <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
+                <div class="text">
+                <input type="text" name="enterprise"/>
+                </div>
+                <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
+                <input type="number" class="nombre" name="salary"/>
+                <p class="p">€<p>
+                <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
+                <div class="text">
+                <input type="text" name="address"/>
+                </div>
+                <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
+                <input type="number" class="nombre" name="period"/>
+                <p class="p">Semaines</p>
+                <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
+                <input type="number" class="nombre" name="seats"/>
+                <p></p>
+                <div><h3>Compétences requises :</h3></div>
+                <div class="text text2">
+                    <input type="text" name="skill"/>
+                </div>
+    
+            </section>
+            <section style="align-items: center;text-align: center;">        
+                <button class="buttonsub" ><b>Annuler</b></button>
+                <button class="buttonsub" type="submit"><b>Valider</b></button>
+            </section>
+        </form>
     </main>
     <footer class="footer">
         <div class="flex">
@@ -93,15 +80,15 @@
                 <p class="pfooter"><a href="Mentions légales et Politique de confidentialité.html">Mentions légales</a></p>
                 <p class="pfooter"><a href="CGU.html">CGU</a></p>
             </div>
-            <div class="margin" >
-            <p class="titre" class="pfooter">L'ACTUALITÉ </p>
-            <div class="center"><a class="plink" href="https://www.linkedin.com/school/cesi-officiel/">Linkdin</a></div>
-            <div class="center"><a class="plink" href="https://mobile.twitter.com/cesi_officiel">Twitter</a></div>
-            <div class="center"><a class="plink" href="https://m.facebook.com/CESIingenieurs/events/">Facebook</a></div>
-            <div class="center"><a class="plink" href="https://www.instagram.com/cesi_officiel/?hl=fr">Instagram</a></div>
-            <div class="center"><a class="plink" href="https://www.youtube.com/channel/UCWanyqUivV6rjbTABGFI8pA">Youtube</a></div>
+                <div class="margin" >
+                <p class="titre" class="pfooter">L'ACTUALITÉ </p>
+                <div class="center"><a class="plink" href="https://www.linkedin.com/school/cesi-officiel/">Linkdin</a></div>
+                <div class="center"><a class="plink" href="https://mobile.twitter.com/cesi_officiel">Twitter</a></div>
+                <div class="center"><a class="plink" href="https://m.facebook.com/CESIingenieurs/events/">Facebook</a></div>
+                <div class="center"><a class="plink" href="https://www.instagram.com/cesi_officiel/?hl=fr">Instagram</a></div>
+                <div class="center"><a class="plink" href="https://www.youtube.com/channel/UCWanyqUivV6rjbTABGFI8pA">Youtube</a></div>
             </div>
         </div>
-        </footer>
-    </body>
+    </footer>
+</body>
 </html>

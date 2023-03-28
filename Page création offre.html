@@ -28,10 +28,14 @@
 
     <main>
         <div class="cadreconnexion">
-        <form action="Ajouter_utilisateur.php" method="post">
+        <form action="add_job.php" method="post">
             <h1 class="titre">Crée une offre</h1>
 
             <ul class="removep">
+                <li>
+                    <h4 class="textecadre">Nom de l'offre</h4>
+                    <input class="inputcadre" type="text" name="nameJob"/>
+                </li>
                 <li>
                     <h4 class="textecadre">Entreprise</h4>
                     <input class="inputcadre" type="text" name="enterprise"/>
@@ -56,14 +60,7 @@
                 </li>
                 <li>
                     <h4 class="textecadre">Compétences</h4>
-                    <div class="skill">
-                        <b>Skill1</b>
-                    </div>
-                    <select name="skill">
-                        <option>...</option>
-                        <option>Skill1</option>
-                        <option>Skill2</option>
-                    </select>
+                    <input class="inputcadre" type="text" name="skill"/>
                 </li>
             </ul>
             <button class="buttonsub" type="submit"><b>VALIDER</b></button>

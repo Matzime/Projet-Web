@@ -1,3 +1,8 @@
+<?php
+$nameJob = "Nom Offre"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
+setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/page présentation profil.css">
+    <link rel="stylesheet" href="./css/page présentation offre.css">
     <meta charset="UTF-8" />
-    <title>Profil</title>
+    <title>Stage Xplorer</title>
 </head>
 
 <body>
@@ -20,7 +25,6 @@
             <a href="#" class="m-logo1"><img src="./image/Profil.png"></a>
             <a href="#" class="m-logo2"><img src="./image/Bell.png"></a>
         </div>
-
         </nav>
         <div class="yellowbar">
         </div>
@@ -29,51 +33,56 @@
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1>Nom Prénom</h1>
-            </div>
-            <div class="profil">
-                <img src="./image/Profil.png" alt="profil"/>
+                <h1>Nom Offre</h1>
             </div>
         </section>
         <div>
             <h2>Informations :</h2>
         </div>
-        <section class ="cadrejaunerech">
-            <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
-            <div class="text" >ExempleMail@mail.fr</div>
-            <div class="image"><img src="./image/badge.png" alt="mail" class="png" /></div>
-            <div class="text" >Status : Promo</div>
+        <section class ="cadregris">
+            <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
+            <div class="text" >Entreprise</div>
+            <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
+            <div class="text" >Argent</div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
             <div class="text" >Adresse</div>
-            <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" >Campus</div>
+            <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
+            <div class="text" >Durée</div>
+            <div class="image"><img src="./image/past.png" alt="mail" class="png" /></div>
+            <div class="text" >Date publication</div>
+            <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
+            <div class="text" >Nmb poste proposé</div>
+            <p></p>
+            <div><h3>Compétences requises :</h3></div>
+            <div class="skills">
+                <div class="skill">
+                    <b>Skill1</b>
+                </div>
+            </div>
         </section>
-        <section>
-            <div>
-                <h2>Wish-list :</h2>
+        <form action="wishlist.php">
+                <div class="wishlist"><h4>Mettre cette offre dans votre wish-list :</h4> 
+                <button class="buttonsub3" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
             </div>
-            <div class ="cadregris">
-                <form action="delete_wishlist.php">
-                    <h3>Nom Poste</h3>
-                    <div class="image"><img src="./image/entreprise.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Entreprise</div>
-                    <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Argent</div>
-                    <button class="buttonsub2" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
-                    <p></p>
-                    <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Adresse</div>
-                    <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Durée</div>
-                </form>
-            </div>
+        </form>  
+        <div>
+            <h2>Envie de postuler ?</h2>
+        </div>
+        <section class ="cadregris">
+        <form action="apply_job.php">
+                <h3>CV :</h3>
+                <input type="file" id="CV" name="cv" accept="application/pdf,application/vnd.ms-excel">
+                <p></p>
+                <h3>Lettre de motivation :</h3>
+                <input  type="file" id="letter" name="letter" accept="application/pdf,application/vnd.ms-excel">
+                <button class="buttonsub" type="submit"><b>Envoyer</b></button>
+            </form>
         </section>
         <section style="align-items: center;text-align: center;">        
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
             <button class="buttonsub" type="submit"><b>Modifier</b></button>
         </section>
     </main>
-    
     <footer class="footer">
         <div class="flex">
             <div class="margin" class="domaine" class="flex"> 
@@ -99,6 +108,5 @@
             </div>
         </div>
         </footer>
-
     </body>
 </html>
