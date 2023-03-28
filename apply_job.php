@@ -8,7 +8,7 @@ $cv = $_COOKIE['cv'];
 $letter = $_COOKIE['letter'];
 
 //Récupération de la date d'aujourd'hui
-$datePublication = date("d-m-Y");
+$dateApply = date("d-m-Y");
 
 // Récupérer l'ID du l'offre à partir du nom
 $stmt = "SELECT ID_Offre FROM offre WHERE Nom_offre LIKE CONCAT('%', ?, '%')";
@@ -19,14 +19,15 @@ $ID_job = $result;
 
 // Préparer la requête SQL pour ajouter une évaluation
 // Requête SQL
-$sql1 = "INSERT INTO candidature (ID_Utilisateur, ID_Offre) VALUES (?, ?)";
+$sql1 = "INSERT INTO candidature (ID_Utilisateur, CV, Lettre_Motivation, Date_Candidature, ID_Statut, ID_Offre, ID_Utilisateur) 
+VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt1 = $conn->prepare($sql1);
-$stmt1->bind_param('ii', $ID_user, $ID_job,);
+$stmt1->bind_param('ii', $ID_user, $cv, $letter, $dateApply, 1, $ID_job, $ID_user);
 
 if ($stmt1->execute()) {
-    echo "Offre supprimer de la wish-list.";
+    echo "Votre candidature à bien été pris en compte.";
 } else {
-    echo "Une erreur est survenue lors de la suppresion de l'offre dans la wish-list. " . $conn->error;
+    echo "Une erreur est survenue lors de votre candidature. " . $conn->error;
 }
 $stmt1->close();
 ?>
