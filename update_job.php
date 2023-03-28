@@ -2,12 +2,12 @@
 require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
+$nameJob = $_COOKIE['nameJob'];
 $enterprise = $_POST['enterprise'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
 $skill = $_POST['skill'];
-$ID_address = 1;
 var_dump($skill);
 
 //Récupération, décomposition et validation de l'adresse

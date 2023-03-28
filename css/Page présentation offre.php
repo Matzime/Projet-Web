@@ -1,3 +1,8 @@
+<?php
+$nom_offre = "Nom Offre"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
+setcookie("nom_offre", $nom_offre, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

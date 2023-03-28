@@ -2,6 +2,7 @@
 require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
+$nameJob = $_POST['nameJob'];
 $enterprise = $_POST['enterprise'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
@@ -68,10 +69,10 @@ if ($result->num_rows > 0) {
     $ID_enterprise = $row['ID_Entreprise'];
 
     // Préparer la requête SQL pour ajouter l'offre
-    $sql2 = "INSERT INTO offre (ID_offre, Duree_Offre, Remuneration_Offre, Date_Offre, Nbr_Places_Offre, ID_Entreprise) 
-    VALUES (?, ?, ?, ?, ?, ?)";
+    $sql2 = "INSERT INTO offre (ID_offre, Nom_Offre, Duree_Offre, Remuneration_Offre, Date_Offre, Nbr_Places_Offre, ID_Entreprise) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt2 = $conn->prepare($sql2);
-    $stmt2->bind_param('ididii', $ID_job, $period, $salary, $datePublication, $seats, $ID_enterprise);
+    $stmt2->bind_param('isdidii', $ID_job, $nameJob, $period, $salary, $datePublication, $seats, $ID_enterprise);
 
     if ($stmt2->execute()) {
         echo "Offre ajoutée avec succès.";
