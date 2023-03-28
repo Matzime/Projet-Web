@@ -14,7 +14,7 @@ $address = urlencode($_POST['address']); // Encodage de l'adresse pour la requê
 $apiKey = 'f7506853d19a4b5e9fa3382af20257f8'; 
 
 //Récupération de la date d'aujourd'hui
-$datePublication = date("Y-m-d");
+$datePublication = date("d-m-Y");
 
 // Effectuer une requête HTTP vers l'API Geocoding
 $url = "https://api.opencagedata.com/geocode/v1/json?q={$address}&key={$apiKey}";
