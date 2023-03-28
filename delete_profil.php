@@ -55,27 +55,39 @@ if ($stmt3->execute()) {
 $stmt3->close();
 
 // Supprimer l'utilisateur des candiature
-$sql4 = "DELETE FROM Connaitre WHERE id_utilisateur=?";
+$sql4 = "DELETE FROM candidature WHERE id_utilisateur=?";
 $stmt4 = $conn->prepare($sql4);
 $stmt4->bind_param('i', $ID_user);
 
-if ($stmt3->execute()) {
+if ($stmt4->execute()) {
     echo "Connaitre supprimer avec succès.";
 } else {
     echo "Une erreur est survenue lors de la suppresion des candidatures : " . $conn->error;
 }
 $stmt4->close();
 
-// Supprimer l'utilisateur des candiature
-$sql5 = "DELETE FROM Utilisateur WHERE id_utilisateur=?";
+// Supprimer l'utilisateur
+$sql5 = "DELETE FROM Appartenir WHERE id_utilisateur=?";
 $stmt5 = $conn->prepare($sql5);
 $stmt5->bind_param('i', $ID_user);
 
-if ($stmt3->execute()) {
+if ($stmt5->execute()) {
     echo "Utilisateur supprimer avec succès.";
 } else {
     echo "Une erreur est survenue lors de la suppresion des candidatures : " . $conn->error;
 }
-$stmt4->close();
+$stmt5->close();
+
+// Supprimer l'utilisateur
+$sql6 = "DELETE FROM Utilisateur WHERE id_utilisateur=?";
+$stmt6 = $conn->prepare($sql6);
+$stmt6->bind_param('i', $ID_user);
+
+if ($stmt6->execute()) {
+    echo "Utilisateur supprimer avec succès.";
+} else {
+    echo "Une erreur est survenue lors de la suppresion des candidatures : " . $conn->error;
+}
+$stmt6->close();
 ?>
-?>
+
