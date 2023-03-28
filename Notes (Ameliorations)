@@ -1,2 +1,39 @@
 BDD : Enlever tous les accents (ex: "Guérande" --> "Gu?rande")
 Rajouter la fonction "SOUNDEX()" à toutes les contraintes sql
+Wishlist à cacher pour les pilotes
+
+
+        si besoin : wishlist (a placer apres cadre gris gengendans pages presentation profil<?php
+        // Vérifier si l'utilisateur est un étudiant
+        if ($role == 'etudiant') {
+            // Récupérer les offres de la table wishlist pour cet étudiant
+            $sql = "SELECT * FROM wishlist WHERE ID_Utilisateur = '$id_utilisateur'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $id_offre = $row['ID_Offre'];
+
+                    // Récupérer les informations sur l'offre à partir de la table des offres (à adapter en fonction de la structure de votre table des offres)
+                    $sql_offre = "SELECT * FROM offres WHERE ID = '$id_offre'";
+                    $result_offre = $conn->query($sql_offre);
+                    $offre = $result_offre->fetch_assoc();
+
+                    // Afficher les informations sur l'offre (à adapter en fonction des informations de l'offre que vous souhaitez afficher)
+                    echo "<div class='offre'>";
+                    echo "<h3>" . $offre['titre'] . "</h3>";
+                    echo "<div class='image'><img src='./image/entreprise.png' alt='entreprise' class='png' /></div>";
+                    echo "<div class='text2'>" . $offre['entreprise'] . "</div>";
+                    echo "<div class='image'><img src='./image/money.png' alt='salaire' class='png' /></div>";
+                    echo "<div class='text2'>" . $offre['salaire'] . "</div>";
+                    echo "<div class='image'><img src='./image/marker.png' alt='adresse' class='png' /></div>";
+                    echo "<div class='text2'>" . $offre['adresse'] . "</div>";
+                    echo "<div class='image'><img src='./image/planning.png' alt='duree' class='png' /></div>";
+                    echo "<div class='text2'>" . $offre['duree'] . "</div>";
+                    echo "</div>";
+                }
+            } else {
+                echo "Aucune offre dans votre wish-list.";
+            }
+        }
+        ?>

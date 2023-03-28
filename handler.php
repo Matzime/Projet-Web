@@ -43,7 +43,7 @@ if (isset($_POST['action'])) {
             $stmt3->close();
 
             if (($role == 'Etudiant' && $but == "retudiant") || ($role == 'Pilote' && $but == "rpilote")) {
-                header("Location: Page présentation profil.html?nom_recherché=" . urlencode($nom_recherché));
+                header("Location: Page présentation profil.html?nom_recherché=" . urlencode($nom_recherché)."&prenom_recherché=".urlencode($prenom_recherché)."&role=".urlencode($role));
                 exit();
             } elseif ($role == 'Etudiant' && $but == "rpilote") {
                 header("Location: accueil.html");
@@ -62,13 +62,14 @@ if (isset($_POST['action'])) {
         
 
     } elseif ($action == 'entreprise') {
-        
+        header("Location: Page création entrprise.html");
+        exit();
     } elseif ($action == 'compte') {
-        header("Location: Page création compte.php");
+        header("Location: Page création compte.html");
         exit();
     } elseif ($action == 'offre') {
 
-       header("Location: Page création offre.php");
+       header("Location: Page création offre.html");
        exit();
     }
 }

@@ -1,8 +1,27 @@
 <?php
-$fstname = "Prénom"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
-setcookie("Prénom", $fstname, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
-$sndname = "Nom"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
-setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+require_once 'data_base_connexion.php';
+$fstname = isset($_GET['prenom_recherché']) ? $_GET['prenom_recherché'] : 'Prénom';
+$sndname = isset($_GET['nom_recherché']) ? $_GET['nom_recherché'] : 'Nom';
+$role = isset($_GET['role']) ? $_GET['role'] : 'Role';
+
+$sql = "SELECT * FROM utilisateur 
+JOIN centre ON centre.ID_Centre = utilisateur.ID_Centre
+JOIN appartenir ON appartenir.ID_Utilisateur = utilisateur.ID_Utilisateur
+JOIN promo ON appartenir.ID_Promo = promo.ID_Promo Where SOUNDEX(Prenom) = SOUNDEX($fstname) AND SOUNDEX(Nom) = SOUNDEX($sndname);";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $promo = $row['Promo'];
+    $mail = $row['Mail'];
+    $campus = $row['Centre'];
+} else {
+    header("Location: accueil.html");
+    exit();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +32,7 @@ setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/page présentation profil.css">
     <meta charset="UTF-8" />
-    <title><?php$fstname $sndname?></title>
+    <title><?php echo $fstname.' '.$sndname?></title>
 </head>
 
 <body>
@@ -35,7 +54,7 @@ setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1><?php$fstname $sndname?></h1>
+                <h1><?php echo $fstname.' '.$sndname?></h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -46,11 +65,11 @@ setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_
         </div>
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$mail?></div>
+            <div class="text" ><?php echo $mail?></div>
             <div class="image"><img src="./image/badge.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$status?>:<?php$promo?></div>
+            <div class="text" ><?php echo $role?>:<?php echo $promo?></div>
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$campus?></div>
+            <div class="text" ><?php echo $campus?></div>
         </section>
         <section>
             <div>
@@ -58,17 +77,17 @@ setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_
             </div>
             <div class ="cadregris">
                 <form action="delete_wishlist.php">
-                    <h3><?php$nameJob?></h3>
+                    <h3><?php echo $nameJob?></h3>
                     <div class="image"><img src="./image/entreprise.png" alt="mail" class="png" /></div>
-                    <div class="text2" ><?php$enterprise?></div>
+                    <div class="text2" ><?php echo $enterprise?></div>
                     <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-                    <div class="text2" ><?php$money?></div>
+                    <div class="text2" ><?php echo $money?></div>
                     <button class="buttonsub2" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
                     <p></p>
                     <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-                    <div class="text2" ><?php$address?></div>
+                    <div class="text2" ><?php echo $address?></div>
                     <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                    <div class="text2" ><?php$duration?></div>
+                    <div class="text2" ><?php echo $duration?></div>
                 </form>
             </div>
         </section>
