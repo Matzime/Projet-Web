@@ -184,8 +184,14 @@ select {
     border-radius: 30px;
     border: none;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 120%;
+    font-size: 150%;
+    width: 85%;
 }
+
+
+
+
+
 
 
 @media(max-width: 900px){
@@ -217,3 +223,19 @@ font-size: 60%;
 }
 }
 
+@media(max-width: 800px){
+    .Type
+{
+    margin: 1% 1% 1% 2%;
+    width: 15%;
+}
+}
+
+
+@media(max-width: 570px){
+    .cadrejaunerech p.trouveoffre{
+        font-size: 60%;
+    }
+
+
+}
