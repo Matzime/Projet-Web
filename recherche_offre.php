@@ -9,6 +9,11 @@ $remuneration= $_POST['remuneration'];
 $publication = $_POST['publication'];
 $nbrdeplaces = $_POST['nbrdeplaces'];
 
+if($duree==1){$dureeBis='< 8';}
+if($duree==2){$dureeBis='> 8 AND < 16';}
+if($duree==3){$dureeBis='> 16 AND < 24';}
+if($duree==4){$dureeBis='> 24';}
+
 $sql = "SELECT *
         FROM entreprise
         JOIN adresse ON entreprise.ID_Adresse = adresse.ID_Adresse
@@ -18,7 +23,7 @@ $sql = "SELECT *
         WHERE
         (entreprise.Nom LIKE '%$entreprise%' OR '$entreprise' = '') AND
         (competence.Competence = '$competence' OR '$competence' = '') AND
-        (Duree_offre = '$duree' OR '$duree' = '') AND
+        (Duree_offre .'$duree') AND
         (Nom_Ville = '$ville' OR '$ville' = '') AND
         (Date_Offre = '$publication' OR '$publication' = '') AND
         (base_de_remuneration = '$remuneration' OR '$remuneration' = '') AND
