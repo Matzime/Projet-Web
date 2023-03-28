@@ -12,7 +12,7 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/page présentation offre.css">
     <meta charset="UTF-8" />
-    <title>Stage Xplorer</title>
+    <title>Offre</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1>Nom Offre</h1>
+                <h1><?php$nameJob?></h1>
             </div>
         </section>
         <div>
@@ -41,22 +41,22 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
         </div>
         <section class ="cadregris">
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" >Entreprise</div>
+            <div class="text" ><?php$enterprise?></div>
             <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-            <div class="text" >Argent</div>
+            <div class="text" ><?php$money?></div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" >Adresse</div>
+            <div class="text" ><?php$address?></div>
             <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-            <div class="text" >Durée</div>
+            <div class="text" ><?php$period?></div>
             <div class="image"><img src="./image/past.png" alt="mail" class="png" /></div>
-            <div class="text" >Date publication</div>
+            <div class="text" ><?php$datePublication?></div>
             <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
-            <div class="text" >Nmb poste proposé</div>
+            <div class="text" ><?php$seats?></div>
             <p></p>
             <div><h3>Compétences requises :</h3></div>
             <div class="skills">
                 <div class="skill">
-                    <b>Skill1</b>
+                    <b><?php$skill?></b>
                 </div>
             </div>
         </section>

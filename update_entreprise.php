@@ -24,7 +24,6 @@ $responseData = json_decode($response, true);
 
 if (isset($responseData['results'][0])) {
     $adresseDetails = $responseData['results'][0]['components'];
-
     $rue = $adresseDetails['road'] ?? '';
     $numero = $adresseDetails['house_number'] ?? '';
     $ville = $adresseDetails['town'] ?? $adresseDetails['city'] ?? '';
@@ -36,7 +35,7 @@ if (isset($responseData['results'][0])) {
 
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
-$sql1 = "UPDATE adresse SET Num_rue='$numero', Nom_rue='$rue', Nom_ville='$ville', CP_Ville='$code_postal' 
+$sql1 = "UPDATE adresse SET Num_rue=?, Nom_rue=?, Nom_ville=?, CP_Ville=?
 WHERE ID_Adresse='$ID_Adresse')";
 $stmt1 = $conn->prepare($sql1);
 $stmt1->bind_param('issii', $numero, $rue, $ville, $code_postal, $ID_Adresse);
@@ -67,8 +66,8 @@ if ($result->num_rows > 0) {
 }
 
 // Modification de l'entreprise
-$sql2 = "UPDATE entreprise SET ID_Competence='$ID_Competence', ID_Adresse='$ID_adresse' 
-WHERE ID_Entreprise='$ID_entreprise'";
+$sql2 = "UPDATE entreprise SET ID_Competence=?, ID_Adresse=?
+WHERE ID_Entreprise=?";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->bind_param('iii', $ID_Competence, $ID_adresse, $ID_entreprise);
 
@@ -82,10 +81,10 @@ $stmt2->close();
 
 
 // insertion evaluation
-$sql3 = "UPDATE evaluer SET ID_Utilisateur='$_COOKIE['user_id']', Evaluation='$confiance_pilote' 
-WHERE ID_Entreprise='$ID_entreprise'";
+$sql3 = "UPDATE evaluer SET ID_Utilisateur=?, Evaluation=?
+WHERE ID_Entreprise=?";
 $stmt3 = $conn->prepare($sql3);
-$stmt3->bind_param('iii', $_COOKIE['user_id'], $confiance_pilote, $ID_entreprise);
+$stmt3->bind_param('iii', $userID, $confiance_pilote, $ID_entreprise);
 
 if ($stmt3->execute()) {
     echo "Evalutation ajouté avec succès.";
