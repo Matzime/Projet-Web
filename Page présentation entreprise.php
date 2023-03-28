@@ -81,8 +81,12 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
             </div>
         </section>
         <section style="align-items: center;text-align: center;">        
+        <form action="delete_entreprise.php">
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-            <form action="Page modification entreprise.html" method="get"><button class="buttonsub" type="submit"><b>Modifier</b></button></form>
+        </form> 
+            <form action="Page modification entreprise.html" method="get">
+                <button class="buttonsub" type="submit"><b>Modifier</b></button>
+            </form>
         </section>
     </main>
     

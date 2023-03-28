@@ -25,7 +25,6 @@ else
     echo "L'entreprise n'existe pas dans la base de données.";
 }
 
-
 // Deuxième requête SQL
 // Supprimer l'offre des candiature
 $sql2 = "DELETE FROM Candidature WHERE id_offre=?";
@@ -51,6 +50,19 @@ if ($stmt3->execute()) {
     echo "Une erreur est survenue lors de la suppresion des candidatures : " . $conn->error;
 }
 $stmt3->close();
+
+// Troisième requête SQL
+// Supprimer l'offre de la wishlist
+$sql5 = "DELETE FROM Souhaiter WHERE id_offre=?";
+$stmt5 = $conn->prepare($sql5);
+$stmt5->bind_param('i', $ID_Job);
+
+if ($stmt3->execute()) {
+    echo "Offre supprimer de la wishlist avec succès.";
+} else {
+    echo "Une erreur est survenue lors de la suppresion dans la wishlist : " . $conn->error;
+}
+$stmt5->close();
 
 // Quatrième requête SQL
 // Supprimer l'offre
