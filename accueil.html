@@ -26,11 +26,11 @@
         </div>
     </header>
 
-    <form method="post" action="recherche_offre.php">
+
     <p class="bienv"><b>BIENVENUE SUR STAGE XPLORER...</b></p>
 
     <div class="cadrejaunerech">
-
+        <form method="post" action="recherche_offre.php"></form>
         <div class="Type">
             <p class="trouveoffre">Vous cherchez...</p>
             <select name="butrecherche">
@@ -40,7 +40,6 @@
                 <option>Un pilote</option>
             </select>
         </div>
-        <form method="post" action="recherche_offre.php">
         <div class="Type">
             <p class="trouveoffre">Competence :</p>
             <input type="search" name=competence class="input"/>
@@ -79,12 +78,11 @@
         </div>
     </div> 
     <section style="align-items: center;text-align: center;">  
-        <button class="buttonsub" type="submit"><b>Rechercher</b></button></form> 
-    </form>    
-        <button class="buttonsub" type="submit"><b>+ Compte</b></button>
-        <button class="buttonsub" type="submit"><b>+ Entreprise</b></button>
-        <button class="buttonsub" type="submit"><b>+ Offre</b></button>
-
+        <button class="buttonsub" type="submit" name="action" value="rechercher"><b>Rechercher</b></button></form>     
+        <button class="buttonsub" type="submit" name="action" value="compte"><b>+ Compte</b></button>
+        <button class="buttonsub" type="submit" name="action" value="entreprise"><b>+ Entreprise</b></button>
+        <button class="buttonsub" type="submit" name="action" value="offre"><b>+ Offre</b></button>
+    </form> 
     </section>
 </body>
 
