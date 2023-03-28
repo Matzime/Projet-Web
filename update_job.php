@@ -2,20 +2,23 @@
 require_once 'data_base_connexion.php';
 
 // Récupérer les données du formulaire d'inscription
-$nameJob = $_COOKIE['nameJob'];
+
 $enterprise = $_POST['enterprise'];
 $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
 $skill = $_POST['skill'];
+$ID_job = 1;
+$nameJob = "offre1";
 var_dump($skill);
 
 //Récupération, décomposition et validation de l'adresse
 $address = urlencode($_POST['address']); // Encodage de l'adresse pour la requête
 $apiKey = 'f7506853d19a4b5e9fa3382af20257f8'; 
+var_dump($address);
 
 //Récupération de la date d'aujourd'hui
-$datePublication = date("Y-m-d");
+$datePublication = date("d-m-Y");
 
 // Effectuer une requête HTTP vers l'API Geocoding
 $url = "https://api.opencagedata.com/geocode/v1/json?q={$address}&key={$apiKey}";
@@ -38,8 +41,8 @@ if (isset($responseData['results'][0])) {
 
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
-$sql1 = "UPDATE adresse SET Num_rue='$number', Nom_rue='$road', Nom_ville='$town', CP_Ville='$postCode' 
-WHERE ID_adresse ='$ID_address'";
+$sql1 = "UPDATE adresse SET Num_rue=?, Nom_rue=?, Nom_ville=?, CP_Ville=?
+WHERE ID_adresse =?";
 $stmt1 = $conn->prepare($sql1);
 $stmt1->bind_param('issii', $number, $road, $town, $postCode, $ID_address);
 
@@ -63,8 +66,8 @@ if ($result->num_rows > 0) {
     $ID_enterprise = $row['ID_Entreprise'];
 
     // Préparer la requête SQL pour ajouter l'offre
-    $sql2 = "UPDATE offre SET Duree_Offre='$period', Remuneration_Offre=' $salary', Date_Offre='$datePublication', 
-    Nbr_Places_Offre='$seats', ID_Entreprise='$ID_enterprise'WHERE ID_offre ='$ID_job'";
+    $sql2 = "UPDATE offre SET Duree_Offre=?, Remuneration_Offre=?, Date_Offre=?, 
+    Nbr_Places_Offre=?, ID_Entreprise=? WHERE ID_offre =?";
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param('didiii', $period, $salary, $datePublication, $seats, $ID_enterprise, $ID_job);
 

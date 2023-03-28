@@ -64,10 +64,16 @@ background: #FBE216;
 @media(max-width: 470px){
     .m-logo1 img{
         width: 15%;
+        float: none;
     }
     .m-logo2 img{
         width: 15%;
+        float: none;
         
+    }
+
+    .logo{
+        float:none;
     }
 
     

@@ -29,7 +29,7 @@
     <main>
         <section style="align-items: center;text-align: center;">
                 <div class="text">
-                    <input type="text"/>
+                    <h1>Nom Entreprise</h1>
                 </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -38,24 +38,26 @@
         <div>
             <h2>Informations :</h2>
         </div>
+        <form action="update_entreprise.php">
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/gear.png" alt="mail" class="png" /></div>
             <div class="text">
-                <input type="text"/>
+                <input type="text" name="secteur_act"/>
             </div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
             <div class="text">
-                <input type="text"/>
+                <input type="text" name="address"/>
             </div>
             <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
             <div class="text">
-                <input type="number"/>
+                <input type="number" name="confiance_pilote"/>
             </div>
         </section>
         <section style="align-items: center;text-align: center;">        
             <button class="buttonsub" type="submit"><b>Annuler</b></button>
             <button class="buttonsub" type="submit"><b>Valider</b></button>
         </section>
+    </form>
     </main>
     
     <footer class="footer">

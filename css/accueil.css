@@ -71,11 +71,6 @@ color: #000000;
     margin: 1% 0% 2% 3%;
 }
 
-.search i
-{
-    left:  44%;
-    top: 57%;
-}
 
 select {
     width: 100%;
@@ -185,6 +180,20 @@ select {
     text-align: center;
 }
 
+.input{
+    border-radius: 30px;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 150%;
+    width: 85%;
+}
+
+
+
+
+
+
+
 @media(max-width: 900px){
     .cadrejaunerech p.trouveoffre{
         font-size: 85%;
@@ -214,3 +223,19 @@ font-size: 60%;
 }
 }
 
+@media(max-width: 800px){
+    .Type
+{
+    margin: 1% 1% 1% 2%;
+    width: 15%;
+}
+}
+
+
+@media(max-width: 570px){
+    .cadrejaunerech p.trouveoffre{
+        font-size: 60%;
+    }
+
+
+}
