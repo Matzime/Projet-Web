@@ -40,14 +40,14 @@
         <form method="post" action="recherche_offre.php">
         <div class="Type">
             <p class="trouveoffre">Competence :</p>
-            <input type="search" class="competence"/>
+            <input type="search" name="competence" class="trouveoffre"/>
         </div>
         <div class="Type">
             <p class="trouveoffre">Ville :</p>
-            <input type="search" class="ville"/>
+            <input type="search" name="ville" class="trouveoffre"/>
         </div>
         <p class="trouveoffre">Entreprise :</p>
-        <input type="search" class="entreprise"/>
+        <input type="search" name="entreprise" class="trouveoffre"/>
     </div>
         <div class="Type">
             <p class="trouveoffre">Durée :</p>
@@ -64,8 +64,8 @@
             <p class="trouveoffre">Publication :</p>
             <div>
                 <select name="publication">
-                    <option>+ Récentes</option>
-                    <option>+ Anciennes</option>
+                    <option value=1>+ Récentes</option>
+                    <option value=0>+ Anciennes</option>
                 </select>
             </div>
         </div>
