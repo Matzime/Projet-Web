@@ -1,11 +1,11 @@
 <?php
 require_once 'data_base_connexion.php';
 
-$competence = $_POST['competence'];
-$entreprise = $_POST['entreprise'];
-$duree = $_POST['duree'];
-$ville = $_POST['ville'];
-$publication = $_POST['publication'];
+$competence = isset($_GET['competence']) ? $_GET['competence'] : '';
+$entreprise = isset($_GET['entreprise']) ? $_GET['entreprise'] : '';
+$duree = isset($_GET['duree']) ? $_GET['duree'] : '';
+$ville = isset($_GET['ville']) ? $_GET['ville'] : '';
+$publication = isset($_GET['publication']) ? $_GET['publication'] : '';
 
 
 if($duree==1){$dureeBis='< 8';}
