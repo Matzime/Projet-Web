@@ -23,12 +23,12 @@ if (isset($_POST['action'])) {
         exit();}
 
         elseif($but == "retudiant"){
-            $ID_utilisateur = $_COOKIE(user_id);
-
-            // Redirigez vers "rechercher_offre.php" avec la variable "entreprise" en paramètre
-            header("Location: Page présentation profil.php?ID_utilisateur=" . urlencode($ID_utilisateur));
+            $nom_recherché = isset($_POST['nom_recherché']) ? $_POST['nom_recherché'] : '';
+            header("Location: Page présentation profil.php?nom_recherché=" . urlencode($nom_recherché));
             exit();}
         }
+    
+        elseif($but == "retudiant")
 
     } elseif ($action == 'entreprise') {
         
