@@ -81,8 +81,10 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
         <section style="align-items: center;text-align: center;">      
         <form action="delete_job.php">
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
+        </form> 
+        <form action="update_job.php">
             <button class="buttonsub" type="submit"><b>Modifier</b></button>
-        </form>  
+        </form> 
         </section>
     </main>
     <footer class="footer">
