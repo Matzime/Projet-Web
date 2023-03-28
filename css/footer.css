@@ -3,6 +3,7 @@
     width: 100%;
     background-color: #000000;
     bottom: 0;
+
 }
 
 .footer p.pfooter{
@@ -21,4 +22,51 @@
 
 .margin{
     margin: 0 11%;
+}
+
+
+@media(max-width: 1050px){
+    .margin{
+        margin: 0 8%;
+    }
+
+    .footer p.pfooter{
+        font-size: 80%;
+    }
+    .footer p.titre{
+        font-size: 140%;
+    }
+    
+
+}
+
+@media(max-width: 620px){
+    .margin{
+        margin: 0 4%;
+    }
+
+    .footer p.pfooter{
+        font-size: 80%;
+    }
+    .footer p.titre{
+        font-size: 140%;
+    }
+}
+
+@media(max-width: 475px){
+    .footer p.pfooter{
+        font-size: 60%;
+    }
+    .footer p.titre{
+        font-size: 100%;
+    }
+}
+
+@media(max-width: 340px){
+    .footer p.pfooter{
+        font-size: 40%;
+    }
+    .footer p.titre{
+        font-size: 80%;
+    }
 }

@@ -10,20 +10,20 @@
 .logo{
     margin: 5px; padding: 0;
     width: 40%;
+    float: left;
 }
 
 .m-logo1 img{
-    width: 30%;
+    width: 20%;
     float: right;
-    top: 10px;
-    padding: 30px 20px;
+    margin: 16% 8%;
+
 }
 
 .m-logo2 img{
-    width: 30%;
+    width: 20%;
     float: right;
-    padding: 32px 20px;
-    vertical-align: middle;
+    margin: 17% 5%;
 }
 
 .yellowbar
@@ -60,3 +60,16 @@ background: #FBE216;
 .flex{
     display:flex;
 }
+
+@media(max-width: 470px){
+    .m-logo1 img{
+        width: 15%;
+    }
+    .m-logo2 img{
+        width: 15%;
+        
+    }
+
+    
+}
+

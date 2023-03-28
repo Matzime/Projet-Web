@@ -185,3 +185,32 @@ select {
     text-align: center;
 }
 
+@media(max-width: 900px){
+    .cadrejaunerech p.trouveoffre{
+        font-size: 85%;
+    }
+
+
+}
+
+@media(max-width: 870px){
+    .bienv{
+        font-size: 180%;
+    
+    }
+}
+
+@media(max-width: 500px){
+    .bienv{
+        font-size: 120%;
+    
+    }
+}
+
+@media(max-width: 780px){
+    .buttonsub
+{
+font-size: 60%;
+}
+}
+
