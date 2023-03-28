@@ -38,8 +38,8 @@ if (isset($responseData['results'][0])) {
 
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
-$sql1 = "UPDATE adresse SET Num_rue='$number', Nom_rue='$road', Nom_ville='$town', CP_Ville='$postCode' 
-WHERE ID_adresse ='$ID_address'";
+$sql1 = "UPDATE adresse SET Num_rue=?, Nom_rue=?, Nom_ville=?, CP_Ville=?
+WHERE ID_adresse =?";
 $stmt1 = $conn->prepare($sql1);
 $stmt1->bind_param('issii', $number, $road, $town, $postCode, $ID_address);
 
