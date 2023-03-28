@@ -33,7 +33,7 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1>Nom Entreprise</h1>
+                <h1><?php$nameEnterprise?></h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -44,13 +44,13 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
         </div>
         <section class ="cadregris">
             <div class="image"><img src="./image/gear.png" alt="mail" class="png" /></div>
-            <div class="text" >Secteur d'activité</div>
+            <div class="text" ><?php$sector?></div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" >Adresse</div>
+            <div class="text" ><?php$address?></div>
             <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
-            <div class="text" >Nbr personne accepté</div>
+            <div class="text" ><?php$accepted?></div>
             <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
-            <div class="text" >Confiance pilote/5</div>
+            <div class="text" ><?php$trust?></div>
         </section>
         <section>
             <div>
@@ -58,13 +58,13 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
             </div>
             <div class ="cadrejaunerech">
                 <div class="image"><img src="./image/Profil.png" alt="mail" class="png" /></div>
-                <div class="text" >Etudiant</div>
+                <div class="text" ><?php$student?></div>
                 <div class="image"><img src="./image/malette.png" alt="mail" class="png" /></div>
-                <div class="text" >Poste</div>
+                <div class="text" ><?php$job?></div>
                 <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                <div class="text" >Durée</div>
+                <div class="text" ><?php$duartion?></div>
                 <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
-                <div class="text" >Evaluation/5</div>
+                <div class="text" ><?php$evaluation?></div>
             </div>
         </section>
         <section>
