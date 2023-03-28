@@ -30,14 +30,14 @@
     <p class="bienv"><b>BIENVENUE SUR STAGE XPLORER...</b></p>
 
     <div class="cadrejaunerech">
-        <form method="post" action="recherche_offre.php"></form>
+        <form method="post" action="handler.php">
         <div class="Type">
             <p class="trouveoffre">Vous cherchez...</p>
             <select name="butrecherche">
-                <option>Une offre</option>
-                <option>Une entreprise</option>
-                <option>Un étudiant</option>
-                <option>Un pilote</option>
+                <option value="roffre">Une offre</option>
+                <option value="rentreprise">Une entreprise</option>
+                <option value="retudiant">Un étudiant</option>
+                <option value="rpilote">Un pilote</option>
             </select>
         </div>
         <div class="Type">
@@ -82,8 +82,8 @@
         <button class="buttonsub" type="submit" name="action" value="compte"><b>+ Compte</b></button>
         <button class="buttonsub" type="submit" name="action" value="entreprise"><b>+ Entreprise</b></button>
         <button class="buttonsub" type="submit" name="action" value="offre"><b>+ Offre</b></button>
-    </form> 
     </section>
+    </form> 
 </body>
 
 <footer class="footer">
