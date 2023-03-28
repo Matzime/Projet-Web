@@ -1,3 +1,9 @@
+<?php
+$fstname = "Prénom"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
+setcookie("Prénom", $fstname, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+$sndname = "Nom"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
+setcookie("Nom", $sndname, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +13,7 @@
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/page présentation profil.css">
     <meta charset="UTF-8" />
-    <title>Profil</title>
+    <title><?php$fstname $sndname?></title>
 </head>
 
 <body>
@@ -29,7 +35,7 @@
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1>Nom Prénom</h1>
+                <h1><?php$fstname $sndname?></h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -40,13 +46,11 @@
         </div>
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
-            <div class="text" >ExempleMail@mail.fr</div>
+            <div class="text" ><?php$mail?></div>
             <div class="image"><img src="./image/badge.png" alt="mail" class="png" /></div>
-            <div class="text" >Status : Promo</div>
-            <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" >Adresse</div>
+            <div class="text" ><?php$status?>:<?php$promo?></div>
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" >Campus</div>
+            <div class="text" ><?php$campus?></div>
         </section>
         <section>
             <div>
@@ -54,15 +58,17 @@
             </div>
             <div class ="cadregris">
                 <form action="delete_wishlist.php">
-                    <h3>Nom Poste</h3>
+                    <h3><?php$nameJob?></h3>
                     <div class="image"><img src="./image/entreprise.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Entreprise</div>
+                    <div class="text2" ><?php$enterprise?></div>
                     <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Argent</div>
+                    <div class="text2" ><?php$money?></div>
                     <button class="buttonsub2" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
                     <p></p>
+                    <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
+                    <div class="text2" ><?php$address?></div>
                     <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                    <div class="text2" >Durée</div>
+                    <div class="text2" ><?php$duration?></div>
                 </form>
             </div>
         </section>
