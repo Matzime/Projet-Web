@@ -1,4 +1,6 @@
 <?php
+require_once 'data_base_connexion.php';
+
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
     if (isset($_POST['butrecherche'])) {
@@ -22,13 +24,42 @@ if (isset($_POST['action'])) {
         header("Location: Page présentation entreprise.php?entreprise=" . urlencode($entreprise));
         exit();}
 
-        elseif($but == "retudiant"){
+        elseif($but == "retudiant" || $but == "rpilote"){
+
             $nom_recherché = isset($_POST['nom_recherché']) ? $_POST['nom_recherché'] : '';
-            header("Location: Page présentation profil.php?nom_recherché=" . urlencode($nom_recherché));
-            exit();}
+            $prenom_recherché = isset($_POST['prenom_recherché']) ? $_POST['prenom_recherché'] : '';
+
+
+            $sql3 = "SELECT Role FROM utilisateur 
+            JOIN Role ON utilisateur.ID_Role=Role.ID_Role 
+            WHERE SOUNDEX(Prenom) = SOUNDEX(?) 
+            AND SOUNDEX(Nom) = SOUNDEX(?);";
+            $stmt3 = $conn->prepare($sql3);
+            $stmt3->bind_param('ss', $prenom_recherché, $nom_recherché);
+            $stmt3->execute();
+            $result = $stmt3->get_result();
+            $row = $result->fetch_assoc();
+            $role = $row['Role'];
+            $stmt3->close();
+
+            if (($role == 'Etudiant' && $but == "retudiant") || ($role == 'Pilote' && $but == "rpilote")) {
+                header("Location: Page présentation profil.html?nom_recherché=" . urlencode($nom_recherché));
+                exit();
+            } elseif ($role == 'Etudiant' && $but == "rpilote") {
+                header("Location: accueil.html");
+                exit();
+            } elseif ($role == 'Pilote' && $but == "retudiant") {
+                header("Location: accueil.html");
+                exit();
+            }
+            else{
+                header("Location: accueil.html");
+                exit();
+            }
         }
-    
-        elseif($but == "retudiant")
+            
+        }
+        
 
     } elseif ($action == 'entreprise') {
         
@@ -40,5 +71,5 @@ if (isset($_POST['action'])) {
        header("Location: Page création offre.php");
        exit();
     }
-}}
+}
 ?>

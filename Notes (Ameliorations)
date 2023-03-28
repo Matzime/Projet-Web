@@ -1,1 +1,2 @@
 BDD : Enlever tous les accents (ex: "Guérande" --> "Gu?rande")
+Rajouter la fonction "SOUNDEX()" à toutes les contraintes sql
