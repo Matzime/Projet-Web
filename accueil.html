@@ -40,20 +40,20 @@
                 <option>Un pilote</option>
             </select>
         </div>
-
+        <form method="post" action="recherche_offre.php">
         <div class="Type">
             <p class="trouveoffre">Competence :</p>
-            <input type="search" class="input"/>
+            <input type="search" name=competence class="input"/>
         </div>
 
         <div class="Type">
             <p class="trouveoffre">Ville :</p>
-            <input type="search" class="input"/>
+            <input type="search" name=ville class="input"/>
         </div>
 
         <div class="Type">
         <p class="trouveoffre">Entreprise :</p>
-        <input type="search" class="input"/>
+        <input type="search" name=entreprise class="input"/>
         </div>
 
         <div class="Type">
@@ -61,10 +61,10 @@
             
             <div>
                 <select name="duree">
-                    <option>-2 mois</option>
-                    <option>2 à 4 mois</option>
-                    <option>4 à 6 mois</option>
-                    <option>+6 mois</option>
+                    <option value=1>-2 mois</option>
+                    <option value=2>2 à 4 mois</option>
+                    <option value=3>4 à 6 mois</option>
+                    <option value=4>+6 mois</option>
                 </select>
             </div>
         </div>
@@ -72,14 +72,14 @@
             <p class="trouveoffre">Publication :</p>
             <div>
                 <select name="publication">
-                    <option>+ Récentes</option>
-                    <option>+ Anciennes</option>
+                    <option value=1>+ Récentes</option>
+                    <option value=(-1)>+ Anciennes</option>
                 </select>
             </div>
         </div>
     </div> 
     <section style="align-items: center;text-align: center;">  
-        <button class="buttonsub" type="submit"><b>Rechercher</b></button>
+        <button class="buttonsub" type="submit"><b>Rechercher</b></button></form> 
     </form>    
         <button class="buttonsub" type="submit"><b>+ Compte</b></button>
         <button class="buttonsub" type="submit"><b>+ Entreprise</b></button>
