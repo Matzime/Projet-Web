@@ -100,7 +100,6 @@ if ($result->num_rows > 0) {
     // Vérifier le mot de passe
     if (password_verify($MDP, $user['MDP'])) {
         // Les identifiants sont corrects
-        echo "Connexion réussie. Bienvenue, " . $user['Mail'] . "!";
 
         // Stocker les informations d'authentification dans la session
         $_SESSION['user_email'] = $user['Mail'];
@@ -112,6 +111,8 @@ if ($result->num_rows > 0) {
             setcookie('user_email', $user['Mail'], time() + (86400 * 30), "/"); // Stocke l'e-mail pendant 30 jours
             setcookie("user_id", $user['ID_Utilisateur'], time() + (86400 * 30), "/"); // Le cookie expirera après 30 jours
         }
+        header("Location: http://stagexplorer.local/accueil.html");
+        exit;
     } else {
         // Le mot de passe est incorrect
         echo "Erreur : mot de passe incorrect.";
