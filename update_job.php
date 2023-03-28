@@ -7,6 +7,8 @@ $salary = $_POST['salary'];
 $period = $_POST['period'];
 $seats = $_POST['seats'];
 $skill = $_POST['skill'];
+$ID_address = 1;
+var_dump($skill);
 
 //Récupération, décomposition et validation de l'adresse
 $address = urlencode($_POST['address']); // Encodage de l'adresse pour la requête
@@ -30,28 +32,21 @@ if (isset($responseData['results'][0])) {
     $number = $addressDetails['house_number'] ?? '';
     $town = $addressDetails['town'] ?? $addressDetails['city'] ?? '';
     $postCode = $addressDetails['postcode'] ?? '';
-
 } else {
     echo "Adresse introuvable. Veuillez vérifier l'adresse saisie.";
 }
 
-//on génère un nombre aléatoire pour l'ID_Adresse et l'ID_Offre
-$min = 10;
-$max = 1000000; // Vous pouvez définir la valeur maximale que vous souhaitez
-$randomNumber = mt_rand($min, $max);
-$ID_address=$randomNumber;
-$ID_job=$randomNumber;
-
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
 // Première requête SQL
-$sql1 = "INSERT INTO adresse (ID_Adresse, Num_rue, Nom_rue, Nom_ville, CP_Ville) VALUES (?, ?, ?, ?, ?)";
+$sql1 = "UPDATE adresse SET Num_rue='$number', Nom_rue='$road', Nom_ville='$town', CP_Ville='$postCode' 
+WHERE ID_adresse ='$ID_address'";
 $stmt1 = $conn->prepare($sql1);
-$stmt1->bind_param('iissi', $ID_address, $number, $road, $town, $postCode);
+$stmt1->bind_param('issii', $number, $road, $town, $postCode, $ID_address);
 
 if ($stmt1->execute()) {
-    echo "Adresse ajoutée avec succès.";
+    echo "Adresse modifié avec succès.";
 } else {
-    echo "Une erreur est survenue lors de l'ajout de l'adresse : " . $conn->error;
+    echo "Une erreur est survenue lors de la modification de l'adresse : " . $conn->error;
 }
 $stmt1->close();
 
@@ -68,15 +63,15 @@ if ($result->num_rows > 0) {
     $ID_enterprise = $row['ID_Entreprise'];
 
     // Préparer la requête SQL pour ajouter l'offre
-    $sql2 = "INSERT INTO offre (ID_offre, Duree_Offre, Remuneration_Offre, Date_Offre, Nbr_Places_Offre, ID_Entreprise) 
-    VALUES (?, ?, ?, ?, ?, ?)";
+    $sql2 = "UPDATE offre SET Duree_Offre='$period', Remuneration_Offre=' $salary', Date_Offre='$datePublication', 
+    Nbr_Places_Offre='$seats', ID_Entreprise='$ID_enterprise'WHERE ID_offre ='$ID_job'";
     $stmt2 = $conn->prepare($sql2);
-    $stmt2->bind_param('ididii', $ID_job, $period, $salary, $datePublication, $seats, $ID_enterprise);
+    $stmt2->bind_param('didiii', $period, $salary, $datePublication, $seats, $ID_enterprise, $ID_job);
 
     if ($stmt2->execute()) {
-        echo "Offre ajoutée avec succès.";
+        echo "Offre modifié avec succès.";
     } else {
-        echo "Une erreur est survenue lors de l'ajout de l'offre : " . $conn->error;
+        echo "Une erreur est survenue lors de la modification de l'offre : " . $conn->error;
     }
     $stmt2->close();
 } else {
@@ -98,15 +93,15 @@ if ($result->num_rows > 0) {
     $ID_skill = $row['ID_Competence'];
 
     // Préparer la requête SQL pour ajouter l'offre
-    $sql3 = "INSERT INTO connaitre (ID_Competence, ID_offre) VALUES (?, ?)";
+    $sql3 = "UPDATE connaitre SET ID_Competence='$ID_skill' WHERE ID_offre ='$ID_job'";
     $stmt3 = $conn->prepare($sql3);
     $stmt3->bind_param('ii', $ID_skill, $ID_job);
 
     if ($stmt3->execute()) {
-        echo "Competence ajoutée avec succès.";
+        echo "Competence modifié avec succès.";
 
     } else {
-        echo "Une erreur est survenue lors de l'ajout de la competence : " . $conn->error;
+        echo "Une erreur est survenue lors de la modfication de la competence : " . $conn->error;
     }
     $stmt->close();
 } else {

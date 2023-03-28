@@ -22,7 +22,7 @@ h1
 
 h2
 {
-    margin: 0 0 0 20%;
+    margin: 2% 0 0 20%;
     display: flex;
     align-items: center;
     text-align: center;
@@ -92,6 +92,11 @@ border-radius: 50px;
     font-size: 150%;
     line-height: 35px;
     letter-spacing: 0.05em;
+}
+
+.text2
+{
+margin: 2% 2% 2% 5%;
 }
 
 .buttonsub
@@ -174,7 +179,7 @@ border-radius: 50px;
 
     display: inline-block;
     width: 9%;
-    margin: 2% 0 2% 2%;
+    margin: 2% 15% 2% 2%;
 }
 
 
