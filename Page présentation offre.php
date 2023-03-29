@@ -1,5 +1,7 @@
 <?php
 require_once 'data_base_connexion.php';
+// Démarrage de la session
+session_start();
 $ID_Offre = isset($_GET['offre_id']) ? $_GET['offre_id'] : 'Offre';
 echo $ID_Offre;
 
@@ -108,45 +110,37 @@ if ($result->num_rows > 0) {
             </form>
         </section>
         <?php
-// Connexion à la base de données
-require_once 'data_base_connexion.php';
 
-// Démarrage de la session
-session_start();
+
 
 if (isset($_SESSION['user_id'])) {
     $id_utilisateur = $_SESSION['user_id'];
     
     // Récupération de la valeur de "ID_Role" à partir de la base de données
-    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = $id_utilisateur";
-    $resultat = $connexion->query($sql);
+    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_utilisateur);
+    $stmt->execute();
+    $id_role= $stmt->get_result();
 
     // Vérification du résultat de la requête
-    if ($resultat->num_rows > 0) 
+    if ($id_role->num_rows > 0) 
     {
         // Récupération de la première ligne de résultat
-        $ligne = $resultat->fetch_assoc();
+        $ligne = $id_role->fetch_assoc();
         $id_role = $ligne["ID_Role"];
 
         // Affichage des boutons en fonction de la valeur de "ID_Role"
         if ($id_role == 1 || $id_role == 2) {
             // Affichage des deux boutons si l'utilisateur a le rôle 1
             echo '<section style="align-items: center;text-align: center;">
-            <form action="delete_job.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>;
+            <form action="delete_job.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>
             <form action="Page modification offre.html"><button class="buttonsub" type="submit"><b>Modifier</b></button>
             </form></section>';
         }
     }
 }
         ?>
-        <section style="align-items: center;text-align: center;">      
-        <form action="delete_job.php">
-            <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-        </form> 
-        <form action="Page modification offre.html">
-            <button class="buttonsub" type="submit"><b>Modifier</b></button>
-        </form> 
-        </section>
     </main>
     <footer class="footer">
         <div class="flex">
