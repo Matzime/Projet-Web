@@ -1,7 +1,7 @@
 BDD : Enlever tous les accents (ex: "Guérande" --> "Gu?rande")
 Rajouter la fonction "SOUNDEX()" à toutes les contraintes sql
 Wishlist à cacher pour les pilotes
-
+mettre dates dans offres
 
         si besoin : wishlist (a placer apres cadre gris gengendans pages presentation profil<?php
         // Vérifier si l'utilisateur est un étudiant
