@@ -110,9 +110,6 @@ if ($result->num_rows > 0) {
             </form>
         </section>
         <?php
-
-
-
 if (isset($_SESSION['user_id'])) {
     $id_utilisateur = $_SESSION['user_id'];
     
