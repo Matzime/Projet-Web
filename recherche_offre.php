@@ -35,7 +35,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $offre_id = $row['ID_Offre'];
-        echo '<a href="Page présentation offre.php?id=' . urlencode($offre_id) . '" style="text-decoration: none; color: inherit;">';
+        echo '<a href="Page présentation offre.php?offre_id=' . urlencode($offre_id) . '" style="text-decoration: none; color: inherit;">';
         echo "/////////////////////////////////////////////////////////////// " . "<br>";
         echo "Nature du poste : " . $row['Competence'] . "<br>";
         echo "Entreprise : " . $row['Nom'] . "<br>";
