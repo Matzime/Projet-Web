@@ -54,7 +54,7 @@ $address = '';
 $trust = '';
 $studient = '';
 $job = '';
-$duratation = '';
+$duration = '';
 $evaluation = '';
 $accepted = '';
 
@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
         $trust = $row['Prenom'];
         $studient = $row['Nom'];
         $job = $row['Nom_Offre'];
-        $duratation = $row['Duree_offre'];
+        $duration = $row['Duree_offre'];
         $evaluation = $row['Competence']; 
     }
 }
