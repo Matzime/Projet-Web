@@ -192,3 +192,51 @@ select{
     float: right;
     margin: -5% 4%
 }
+
+@media(max-width: 1140px){
+    .butdeco{
+        font-size: 70%;
+    }
+}
+
+@media(max-width: 830px){
+    .text{
+        font-size: 60%;
+    }
+
+    .butdeco{
+        font-size: 60%;
+    }
+}
+
+@media(max-width: 740px){
+    .butdeco{
+        font-size: 60%;
+    }
+
+    h1{
+        font-size: 250%;
+    }
+
+    .phprof{
+        width: 40%;
+    }
+}
+
+@media(max-width: 720px){
+    .butdeco{
+        font-size: 40%;
+    }
+}
+
+@media(max-width: 520px){
+    .buttonsub{
+        font-size: 60%;
+    }
+}
+
+@media(max-width: 500px){
+    .butdeco{
+        font-size: 30%;
+    }
+}

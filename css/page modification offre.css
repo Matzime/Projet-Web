@@ -292,3 +292,20 @@ select{
     padding: 1%;
     margin: 5% 0 5% 4%;
 }
+
+@media(max-width: 965px){
+    h1{
+        font-size: 160%;
+    }
+
+    h2{
+        font-size: 130%;
+    }
+
+    .text{
+        height: 20px;
+    }
+    h3{
+        font-size: 100%;
+    }
+}
