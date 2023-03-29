@@ -24,6 +24,8 @@
                 <button style="background:none;border:none;">
                     <img class="m-logo2" src=image/Bell.png alt="logobell">
                 </button>
+                <form method="POST" action="logout.php">
+            <div><button type="submit" name="logout" class="butdeco">SE DECONNECTER</button></div></form>
             </form>
         </div>
 
@@ -92,7 +94,7 @@
         </div>
     </div> 
     <section style="align-items: center;text-align: center;">
-    <button class="buttonsub" type="submit" name="action" value="rechercher"><b>Rechercher</b></button> 
+    <button class="buttonsub" type="submit" name="action" value="rechercher"><b>Rechercher</b></button></section>
     <?php
 if (isset($_SESSION['user_id'])) {
     $id_utilisateur = $_SESSION['user_id'];
@@ -123,6 +125,9 @@ if (isset($_SESSION['user_id'])) {
     }
 }
         ?>
+                <form method="POST" action="logout.php">
+            <div><button type="submit" name="logout" class="buttonsub">SE DECONNECTER</button></div>
+        </form>
     </section>
     </form> 
 </body>

@@ -65,8 +65,6 @@ if ($result->num_rows > 0) {
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
             </div>
-            <form method="POST" action="logout.php">
-            <div><button type="submit" name="logout" class="butdeco">SE DECONNECTER</button></div></form>
         </section>
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/mail.png" alt="mail" class="png" /></div>
