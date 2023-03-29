@@ -73,9 +73,6 @@ if ($result->num_rows > 0) {
             </select>
         </div>
 
-            <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" ><input type="text"/></div>
-
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
             <div class="text" >
                 Campus :
