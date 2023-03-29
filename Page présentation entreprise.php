@@ -1,6 +1,85 @@
 <?php
-$nameEnterprise = "Nom Entreprise"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
-setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+
+require_once 'data_base_connexion.php';
+$nameEnterprise = isset($_GET['entreprise']) ? $_GET['entreprise'] : 'Entreprise';
+
+$stmt = null;
+$stmt2 = null;
+$stmt3 = null;
+
+$sql10="SELECT * FROM entreprise 
+JOIN evaluer ON evaluer.ID_Entreprise= entreprise.ID_Entreprise
+JOIN adresse ON adresse.ID_Adresse = entreprise.ID_Adresse
+WHERE entreprise.Nom = ?;";
+
+$stmt3 = $conn->prepare($sql10);
+if ($stmt3) {
+    $stmt3->bind_param("s", $nameEnterprise);
+    $stmt3->execute();
+    $result3 = $stmt3->get_result();
+}
+
+$sql = "SELECT *, utilisateur.Nom AS Nom FROM candidature 
+JOIN utilisateur ON candidature.ID_Utilisateur=utilisateur.ID_Utilisateur
+JOIN evaluer ON evaluer.ID_Utilisateur=utilisateur.ID_Utilisateur
+JOIN souhaiter ON utilisateur.ID_Utilisateur=souhaiter.ID_Utilisateur
+JOIN offre ON offre.ID_Offre = souhaiter.ID_Offre
+JOIN entreprise ON offre.ID_Entreprise = entreprise.ID_Entreprise
+WHERE candidature.ID_Statut=4 AND entreprise.Nom = ?;";
+
+$stmt = $conn->prepare($sql);
+if ($stmt) {
+    $stmt->bind_param("s", $nameEnterprise);
+    $stmt->execute();
+    $result3 = $stmt->get_result();
+}
+
+$sql2 = "SELECT COUNT(*) FROM candidature 
+JOIN utilisateur ON candidature.ID_Utilisateur=utilisateur.ID_Utilisateur
+JOIN evaluer ON evaluer.ID_Utilisateur=utilisateur.ID_Utilisateur
+JOIN souhaiter ON utilisateur.ID_Utilisateur=souhaiter.ID_Utilisateur
+JOIN offre ON offre.ID_Offre = souhaiter.ID_Offre
+JOIN entreprise ON offre.ID_Entreprise = entreprise.ID_Entreprise
+WHERE candidature.ID_Statut=4 AND entreprise.Nom = ?;";
+
+$stmt2 = $conn->prepare($sql2);
+if ($stmt2) {
+    $stmt2->bind_param("s", $nameEnterprise);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+}
+
+$sector = '';
+$address = '';
+$trust = '';
+$studient = '';
+$job = '';
+$duratation = '';
+$evaluation = '';
+$accepted = '';
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $trust = $row['Prenom'];
+        $studient = $row['Nom'];
+        $job = $row['Nom_Offre'];
+        $duratation = $row['Duree_offre'];
+        $evaluation = $row['Competence']; 
+    }
+}
+
+if ($result2->num_rows > 0) {
+    while ($row = $result2->fetch_assoc()) {
+        $accepted = $row['COUNT(*)'];
+    }
+}
+if ($result3->num_rows > 0) {
+    while ($row = $result3->fetch_assoc()) {
+        $sector = $row['Competence'];
+        $address = $row['Ville'];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +112,7 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1><?php$nameEnterprise?></h1>
+                <h1><?php echo $nameEnterprise?></h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -44,27 +123,27 @@ setcookie("nameEnterprise", $nameEnterprise, time() + 3600, "/"); // Créer un c
         </div>
         <section class ="cadregris">
             <div class="image"><img src="./image/gear.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$sector?></div>
+            <div class="text" ><?php echo $sector?></div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$address?></div>
+            <div class="text" ><?php echo $address?></div>
             <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$accepted?></div>
+            <div class="text" ><?php echo $accepted?></div>
             <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$trust?></div>
+            <div class="text" ><?php echo $trust?></div>
         </section>
         <section>
             <div>
                 <h2>Evaluations :</h2>
             </div>
             <div class ="cadrejaunerech">
-                <div class="image"><img src="./image/Profil.png" alt="mail" class="png" /></div>
-                <div class="text" ><?php$student?></div>
+               <div class="image"><img src="./image/Profil.png" alt="mail" class="png" /></div>
+                <div class="text" ><?php echo $studient?></div>
                 <div class="image"><img src="./image/malette.png" alt="mail" class="png" /></div>
-                <div class="text" ><?php$job?></div>
+                <div class="text" ><?php echo $job?></div>
                 <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-                <div class="text" ><?php$duartion?></div>
+                <div class="text" ><?php echo $duration?></div>
                 <div class="image"><img src="./image/star.png" alt="mail" class="png" /></div>
-                <div class="text" ><?php$evaluation?></div>
+                <div class="text" ><?php echo $evaluation?></div>
             </div>
         </section>
         <section>

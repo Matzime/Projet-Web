@@ -1,7 +1,7 @@
 <?php
 require_once 'data_base_connexion.php';
 $ID_Offre = isset($_GET['offre_id']) ? $_GET['offre_id'] : 'Offre';
-echo $ID_Offre;
+
 
 $sql = "SELECT *, entreprise.Nom AS Nom_Entreprise
 FROM entreprise
