@@ -11,7 +11,6 @@ if (isset($_COOKIE['user_email']) && isset($_COOKIE['user_id'])) {
     setcookie("user_id", "", time() - 3600, "/"); // Expire le cookie
 }
 
-// Rediriger vers la page de connexion ou une autre page de votre choix
 header("Location: connexion.html");
 exit;
     }
