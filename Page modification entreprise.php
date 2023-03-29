@@ -24,9 +24,16 @@ $evaluation = isset($_POST['confiance_pilote']) ? $_POST['confiance_pilote'] : '
         <div class="m-left">
             <a href="accueil.html"><img class="logo" src="image/logo.png" alt="logo" class="logo"/></a>
         </div>
+
         <div class="m-right">
-            <a href="#" class="m-logo1"><img src="image/Profil.png" alt="logoprofil"></a>
-            <a href="#" class="m-logo2"><img src="image/Bell.png" alt="logonotif"> </a>
+            <form method="post" action="logout.php">
+                <button type="submit" name="logout" style="background:none;border:none;">
+                    <img class="m-logo1" src="image/Profil.png" alt="logoprofil" >
+                </button>
+                <button style="background:none;border:none;">
+                    <img class="m-logo2" src=image/Bell.png alt="logobell">
+                </button>
+            </form>
         </div>
 
         </nav>
