@@ -7,7 +7,7 @@ $role = isset($_GET['role']) ? $_GET['role'] : 'Role';
 $sql = "SELECT * FROM utilisateur 
 JOIN centre ON centre.ID_Centre = utilisateur.ID_Centre
 JOIN appartenir ON appartenir.ID_Utilisateur = utilisateur.ID_Utilisateur
-JOIN promo ON appartenir.ID_Promo = promo.ID_Promo Where SOUNDEX(Prenom) = SOUNDEX($fstname) AND SOUNDEX(Nom) = SOUNDEX($sndname);";
+JOIN promo ON appartenir.ID_Promo = promo.ID_Promo Where SOUNDEX(Prenom) = SOUNDEX('$fstname') AND SOUNDEX(Nom) = SOUNDEX('$sndname');";
 
 $result = $conn->query($sql);
 
@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
             <div class="text" ><?php echo $campus?></div>
         </section>
-        <section>
+        <!-- <section>
             <div>
                 <h2>Wish-list :</h2>
             </div>
@@ -90,7 +90,7 @@ if ($result->num_rows > 0) {
                     <div class="text2" ><?php echo $duration?></div>
                 </form>
             </div>
-        </section>
+        </section> -->
         <section style="align-items: center;text-align: center;">        
             <form action="delete_profil.php">
                 <button class="buttonsub" type="submit"><b>Supprimer</b></button>

@@ -1,9 +1,9 @@
 <?php
 require_once 'data_base_connexion.php';
-$ID_Offre = isset($_GET['ID_Offre']) ? $_GET['ID_Offre'] : 'Offre';
+$ID_Offre = isset($_GET['offre_id']) ? $_GET['offre_id'] : 'Offre';
+echo $ID_Offre;
 
-
-$sql = "SELECT *
+$sql = "SELECT *, entreprise.Nom AS Nom_Entreprise
 FROM entreprise
 JOIN adresse ON entreprise.ID_Adresse = adresse.ID_Adresse
 JOIN offre ON offre.ID_Entreprise = entreprise.ID_Entreprise
@@ -15,19 +15,22 @@ WHERE
 
 $result = $conn->query($sql);
 
+
 if ($result->num_rows > 0) {
-    $nomOffre = $row['Nom_Offre'];
-    $enterprise = $row['entreprise.Nom'];
-    $money = $row['Remuneration_Offre'];
-    $address = $row['Nom_Ville'];
-    $period = $row['Duree_offre'];
-    $datePublication = $row['Date_Offre'];
-    $seats = $row['Nbr_Places_Offre'];
-    $skill = $row['Competence'];
+    while ($row = $result->fetch_assoc()) {
+        $nomOffre = $row['Nom_Offre'];
+        $enterprise = $row['Nom_Entreprise'];
+        $money = $row['Remuneration_Offre'];
+        $address = $row['Nom_Ville'];
+        $period = $row['Duree_offre'];
+        $datePublication = $row['Date_Offre'];
+        $seats = $row['Nbr_Places_Offre'];
+        $skill = $row['Competence'];
+    }
 }
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -137,4 +140,4 @@ if ($result->num_rows > 0) {
         </div>
         </footer>
     </body>
-</html>
+</html> -->
