@@ -3,7 +3,7 @@ require_once 'data_base_connexion.php';
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
@@ -14,14 +14,21 @@ require_once 'data_base_connexion.php';
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="menu">
         <div class="m-left">
             <a href="accueil.html"><img class="logo" src="image/logo.png" alt="logo" class="logo"/></a>
         </div>
+
         <div class="m-right">
-            <a href="#" class="m-logo1"><img src="./image/Profil.png"></a>
-            <a href="#" class="m-logo2"><img src="./image/Bell.png"></a>
+            <form method="post" action="logout.php">
+                <button type="submit" name="logout" style="background:none;border:none;">
+                    <img class="m-logo1" src="image/Profil.png" alt="logoprofil" >
+                </button>
+                <button style="background:none;border:none;">
+                    <img class="m-logo2" src=image/Bell.png alt="logobell">
+                </button>
+            </form>
         </div>
 
         </nav>
