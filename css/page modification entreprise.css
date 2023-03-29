@@ -31,15 +31,7 @@ h2
     color: #000000;
 }
 
-h3
-{
-    margin: 0 0 0 8%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #000000;
-}
+
 
 .cadrejaunerech
 {
@@ -48,44 +40,7 @@ background: #FBE216;
 border-radius: 50px;
 }
 
-.cadregris
-{
-margin: 2% 20%;
-background: #d6d6d6;
-border-radius: 50px;
-}
 
-.cadretext
-{
-    width: 60%;
-    height: 50vh;
-    margin: 2% 20%;
-    background: #d6d6d6;
-    border-radius: 50px;
-    padding: 1%;
-}
-
-.textareamodif
-{
-    width: 60%;
-    height: 50vh;
-    margin: 2% 20%;
-    border-radius: 50px;
-    padding: 1%;
-}
-
-.nomprenom
-{
-    display: inline-block;
-    width: 30%;
-    font-family: 'Tw Cen MT';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 150%;
-    line-height: 35px;
-    letter-spacing: 0.05em;
-    border-radius: 60px;
-}
 
 .profil
 {
@@ -135,44 +90,8 @@ border-radius: 50px;
     width: 9%;
     margin: 2% 0 2% 5%;
 }
-.cadrejaunerech p.trouveoffre
-{
-
-margin: 0 0 0 4%;
-
-font-family: 'Tw Cen MT';
-font-style: normal;
-font-weight: 300;
-font-size: 150%;
-line-height: 35px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.05em;
-
-color: #000000;
-}
 
 
-.cadrejaunerech p.Quietes
-{
-    
-padding: 0 0 0 16%;
-margin: 0% 0 0;
-
-
-font-family: 'Tw Cen MT';
-font-style: normal;
-font-weight: 400;
-font-size: 150%;
-line-height: 35px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.05em;
-
-color: #000000;
-}
 
 .text input
 {
@@ -184,7 +103,7 @@ color: #000000;
     background: #f0f0f0;
     border-radius: 50px;    
 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     height: 100%;
     width: 100%;
@@ -193,46 +112,32 @@ color: #000000;
 
 }
 
-select{
-    font-size: 130%;
-    align-items: center;
-    box-sizing: border-box;
-    font-family: 'Tw Cen MT';
 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-    height: 20%;
-    width: 49%;
-    border: 0px;
-    border-radius: 30px;
-    padding: 1%;
-    margin: 0 0 0 4%;
-}
-
-.text i
-{
-    left:  44%;
-    top: 57%;
-}
 
 
 .flex{
     display:flex;
 }
 
-.submit input
-{
-    font-size: 130%;
-    align-items: center;
-    box-sizing: border-box;
-    font-family: 'Tw Cen MT';
 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-    height: 20%;
-    width: 42%;
-    border: 0px;
-    border-radius: 30px;
-    padding: 1%;
-    margin: 5% 0 5% 4%;
+
+@media(max-width: 900px){
+    h1{
+        font-size: 100%;
+    }
+    
+    .phprof{
+        width: 30%;
+    }
+
+    h2{
+        font-size: 100%;
+        margin-top: 10%;
+    }
+    
+    .text{
+        height: 20px;
+    }
+
 }
