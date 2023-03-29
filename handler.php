@@ -16,7 +16,7 @@ if (isset($_POST['action'])) {
                 header("Location: recherche_offre.php?competence=" . urlencode($competence)."&entreprise=".urlencode($entreprise)."&duree=".urlencode($duree)."&ville=".urlencode($ville)."&publication=".urlencode($publication));
                 exit();
             } elseif($but == "rentreprise"){
-                $entreprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';
+                $entreprise = isset($_POST['entreprisee']) ? $_POST['entreprisee'] : '';
                 header("Location: Page présentation entreprise.php?entreprise=" . urlencode($entreprise));
                 exit();
             } elseif($but == "retudiant" || $but == "rpilote"){

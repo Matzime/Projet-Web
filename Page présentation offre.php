@@ -3,7 +3,7 @@ require_once 'data_base_connexion.php';
 // Démarrage de la session
 session_start();
 $ID_Offre = isset($_GET['offre_id']) ? $_GET['offre_id'] : 'Offre';
-echo $ID_Offre;
+
 
 $sql = "SELECT *, entreprise.Nom AS Nom_Entreprise
 FROM entreprise
