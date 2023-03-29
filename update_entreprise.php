@@ -3,10 +3,10 @@ require_once 'data_base_connexion.php';
 session_start();
 
 // Récupérer les données du formulaire d'inscription
-$nom_entreprise = 'Astraga';
-$secteur = 'BTP';
-$confiance_pilote = '8523';
-
+$nom_entreprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';;
+$secteur = isset($_POST['competence']) ? $_POST['competence'] : '';;
+$confiance_pilote = isset($_POST['confiance_pilote']) ? $_POST['confiance_pilote'] : '';;
+$adresse = isset($_POST['adresse']) ? $_POST['adresse'] : '';;
 
 
 //Récupération, décomposition et validation de l'adresse

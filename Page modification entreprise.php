@@ -1,7 +1,9 @@
 <?php
 require_once 'data_base_connexion.php';
 $nameEnterprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';
-
+$competence = isset($_POST['secteur_act']) ? $_POST['secteur_act'] : '';
+$adresse = isset($_POST['adresse']) ? $_POST['adresse'] : '';
+$evaluation = isset($_POST['confiance_pilote']) ? $_POST['confiance_pilote'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +46,7 @@ $nameEnterprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';
         <div>
             <h2>Informations :</h2>
         </div>
-        <form action="update_entreprise(bis).php">
+        <form action="update_entreprise.php">
         <section class ="cadrejaunerech">
             <div class="image"><img src="./image/gear.png" alt="mail" class="png" /></div>
             <div class="text">
@@ -61,7 +63,13 @@ $nameEnterprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';
         </section>
         <section style="align-items: center;text-align: center;">        
             <button class="buttonsub" type="submit"><b>Annuler</b></button>
-            <button class="buttonsub" type="submit"><b>Valider</b></button>
+            <form action="update_entreprise.php" method="post">
+            <input type="hidden" name="entreprise" value="<?php echo htmlspecialchars($nameEnterprise); ?>">
+            <input type="hidden" name="secteur_act" value="<?php echo htmlspecialchars($competence); ?>">
+            <input type="hidden" name="adresse" value="<?php echo htmlspecialchars($adresse); ?>">
+            <input type="hidden" name="confiance_pilote" value="<?php echo htmlspecialchars($evaluation); ?>">
+                <button class="buttonsub" type="submit"><b>Valider</b></button>
+            </form>
         </section>
     </form>
     </main>
