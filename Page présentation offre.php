@@ -1,6 +1,30 @@
 <?php
-$nameJob = "Nom Offre"; // Remplacez "Nom Offre" par la valeur que vous souhaitez stocker dans le cookie
-setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "nom_offre" avec une durée de vie de 1 heure
+require_once 'data_base_connexion.php';
+$ID_Offre = isset($_GET['ID_Offre']) ? $_GET['ID_Offre'] : 'Offre';
+
+
+$sql = "SELECT *
+FROM entreprise
+JOIN adresse ON entreprise.ID_Adresse = adresse.ID_Adresse
+JOIN offre ON offre.ID_Entreprise = entreprise.ID_Entreprise
+JOIN connaitre ON connaitre.ID_Offre = offre.ID_Offre
+JOIN competence ON connaitre.ID_Competence = competence.ID_Competence
+WHERE
+(offre.ID_Offre = '$ID_Offre');";
+
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $nomOffre = $row['Nom_Offre'];
+    $enterprise = $row['entreprise.Nom'];
+    $money = $row['Remuneration_Offre'];
+    $address = $row['Nom_Ville'];
+    $period = $row['Duree_offre'];
+    $datePublication = $row['Date_Offre'];
+    $seats = $row['Nbr_Places_Offre'];
+    $skill = $row['Competence'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +57,7 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="nomprenom">
-                <h1><?php$nameJob?></h1>
+                <h1><?php echo $nomOffre?></h1>
             </div>
         </section>
         <div>
@@ -41,22 +65,22 @@ setcookie("nameJob", $nameJob, time() + 3600, "/"); // Créer un cookie nommé "
         </div>
         <section class ="cadregris">
             <div class="image"><img src="./image/building.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$enterprise?></div>
+            <div class="text" ><?php echo $enterprise?></div>
             <div class="image"><img src="./image/money.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$money?></div>
+            <div class="text" ><?php echo $money?></div>
             <div class="image"><img src="./image/marker.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$address?></div>
+            <div class="text" ><?php echo $address?></div>
             <div class="image"><img src="./image/planning.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$period?></div>
+            <div class="text" ><?php echo $period?></div>
             <div class="image"><img src="./image/past.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$datePublication?></div>
+            <div class="text" ><?php echo $datePublication?></div>
             <div class="image"><img src="./image/people.png" alt="mail" class="png" /></div>
-            <div class="text" ><?php$seats?></div>
+            <div class="text" ><?php echo $seats?></div>
             <p></p>
             <div><h3>Compétences requises :</h3></div>
             <div class="skills">
                 <div class="skill">
-                    <b><?php$skill?></b>
+                    <b><?php echo $skill?></b>
                 </div>
             </div>
         </section>
