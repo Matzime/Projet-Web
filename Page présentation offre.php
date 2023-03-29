@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,15 +47,23 @@ if ($result->num_rows > 0) {
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="menu">
         <div class="m-left">
             <a href="accueil.html"><img class="logo" src="image/logo.png" alt="logo" class="logo"/></a>
         </div>
+
         <div class="m-right">
-            <a href="#" class="m-logo1"><img src="./image/Profil.png"></a>
-            <a href="#" class="m-logo2"><img src="./image/Bell.png"></a>
+            <form method="post" action="logout.php">
+                <button type="submit" name="logout" style="background:none;border:none;">
+                    <img class="m-logo1" src="image/Profil.png" alt="logoprofil" >
+                </button>
+                <button style="background:none;border:none;">
+                    <img class="m-logo2" src=image/Bell.png alt="logobell">
+                </button>
+            </form>
         </div>
+
         </nav>
         <div class="yellowbar">
         </div>
