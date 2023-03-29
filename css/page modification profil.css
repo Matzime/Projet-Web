@@ -21,25 +21,6 @@ h1
     color: #000000;
 }
 
-h2
-{
-    margin: 0 0 0 20%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #000000;
-}
-
-h3
-{
-    margin: 0 0 0 8%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #000000;
-}
 
 .cadrejaunerech
 {
@@ -49,20 +30,6 @@ border-radius: 50px;
 }
 
 
-
-
-.nomprenom
-{
-    display: inline-block;
-    width: 30%;
-    font-family: 'Tw Cen MT';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 150%;
-    line-height: 35px;
-    letter-spacing: 0.05em;
-    border-radius: 60px;
-}
 
 .profil
 {
@@ -147,12 +114,6 @@ select{
     border-radius: 30px;
     padding: 1%;
     margin: 0 0 0 4%;
-}
-
-.text i
-{
-    left:  44%;
-    top: 57%;
 }
 
 

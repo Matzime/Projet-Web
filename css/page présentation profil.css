@@ -58,15 +58,6 @@ background: #d6d6d6;
 border-radius: 50px;
 }
 
-.cadretext
-{
-    width: 60%;
-    height: 50vh;
-    margin: 2% 20%;
-    background: #d6d6d6;
-    border-radius: 50px;
-    padding: 1%;
-}
 
 .nomprenom
 {
@@ -150,45 +141,6 @@ border-radius: 50px;
     margin: 2% 0 2% 5%;
 }
 
-.cadrejaunerech p.trouveoffre
-{
-
-margin: 0 0 0 4%;
-
-font-family: 'Tw Cen MT';
-font-style: normal;
-font-weight: 300;
-font-size: 150%;
-line-height: 35px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.05em;
-
-color: #000000;
-}
-
-
-.cadrejaunerech p.Quietes
-{
-    
-padding: 0 0 0 16%;
-margin: 0% 0 0;
-
-
-font-family: 'Tw Cen MT';
-font-style: normal;
-font-weight: 400;
-font-size: 150%;
-line-height: 35px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.05em;
-
-color: #000000;
-}
-
 .text input
 {
     
@@ -225,12 +177,6 @@ select{
     margin: 0 0 0 4%;
 }
 
-.text i
-{
-    left:  44%;
-    top: 57%;
-}
-
 
 .flex{
     display:flex;
@@ -251,4 +197,53 @@ select{
     border-radius: 30px;
     padding: 1%;
     margin: 5% 0 5% 4%;
+}
+
+@media(max-width: 1170px){
+    .text{
+        font-size: 100%;
+    }
+    .text2{
+        font-size: 100%;
+    }
+    .phprof{
+        width: 30%;
+    }
+        
+
+}
+
+@media(max-width: 740px){
+    .text{
+        font-size: 80%;
+    }
+    .text2{
+        font-size: 80%;
+    }
+    .buttonsub{
+        font-size: 60%;
+    }
+}
+
+@media(max-width: 580px){
+    .text{
+        font-size: 70%;
+    }
+    .text2{
+        font-size: 70%;
+    }
+    .phprof{
+        width: 30%;
+    }
+    h2{
+        font-size:100%;
+    }
+    h1{
+        font-size: 100%;
+    }
+    h3{
+        font-size: 70%;
+    }
+        
+
 }
