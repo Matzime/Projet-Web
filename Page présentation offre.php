@@ -105,6 +105,38 @@ if ($result->num_rows > 0) {
                 <button class="buttonsub" type="submit"><b>Envoyer</b></button>
             </form>
         </section>
+        <?php
+// Connexion à la base de données
+require_once 'data_base_connexion.php';
+
+// Démarrage de la session
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    $id_utilisateur = $_SESSION['user_id'];
+    
+    // Récupération de la valeur de "ID_Role" à partir de la base de données
+    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = $id_utilisateur";
+    $resultat = $connexion->query($sql);
+
+    // Vérification du résultat de la requête
+    if ($resultat->num_rows > 0) 
+    {
+        // Récupération de la première ligne de résultat
+        $ligne = $resultat->fetch_assoc();
+        $id_role = $ligne["ID_Role"];
+
+        // Affichage des boutons en fonction de la valeur de "ID_Role"
+        if ($id_role == 1 || $id_role == 2) {
+            // Affichage des deux boutons si l'utilisateur a le rôle 1
+            echo '<section style="align-items: center;text-align: center;">
+            <form action="delete_job.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>;
+            <form action="Page modification offre.html"><button class="buttonsub" type="submit"><b>Modifier</b></button>
+            </form></section>';
+        }
+    }
+}
+        ?>
         <section style="align-items: center;text-align: center;">      
         <form action="delete_job.php">
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
