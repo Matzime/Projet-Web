@@ -1,3 +1,27 @@
+<?php
+require_once 'data_base_connexion.php';
+$fstname = isset($_GET['prenom_recherché']) ? $_GET['prenom_recherché'] : 'Prénom';
+$sndname = isset($_GET['nom_recherché']) ? $_GET['nom_recherché'] : 'Nom';
+$role = isset($_GET['role']) ? $_GET['role'] : 'Role';
+
+$sql = "SELECT * FROM utilisateur 
+JOIN centre ON centre.ID_Centre = utilisateur.ID_Centre
+JOIN appartenir ON appartenir.ID_Utilisateur = utilisateur.ID_Utilisateur
+JOIN promo ON appartenir.ID_Promo = promo.ID_Promo Where SOUNDEX(Prenom) = SOUNDEX($fstname) AND SOUNDEX(Nom) = SOUNDEX($sndname);";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $promo = $row['Promo'];
+    $mail = $row['Mail'];
+    $campus = $row['Centre'];
+} else {
+    header("Location: accueil.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +53,7 @@
     <main>
         <section style="align-items: center;text-align: center;">
             <div class="text">
-                <h1>Nom Prénom</h1>
+                <h1><?php echo $fstname.' '.$sndname?></h1>
             </div>
             <div class="profil">
                 <img src="./image/Profil.png" alt="profil"/>
@@ -45,8 +69,7 @@
             <div class="text" >                
             Promo :
             <select>
-                <option>Promo1</option>
-                <option>Promo2</option>				
+                <option><?php echo $promo?></option>
             </select>
         </div>
 
@@ -57,8 +80,7 @@
             <div class="text" >
                 Campus :
             <select>
-                <option>Centre1</option>
-                <option>Centre2</option>				
+                <option><?php echo $center?></option>				
             </select>
             </div>
         </section>
