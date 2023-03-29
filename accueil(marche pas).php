@@ -1,0 +1,164 @@
+<?php
+require_once 'data_base_connexion.php';
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/accueil.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <meta charset="UTF-8" />
+    <title>Stage Xplorer</title>
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+        <div class="m-left">
+            <a href="accueil.html"><img class="logo" src="image/logo.png" alt="logo" class="logo"/></a>
+        </div>
+
+        <div class="m-right">
+            <form method="post" action="logout.php">
+                <button type="submit" name="logout" style="background:none;border:none;">
+                    <img class="m-logo1" src="image/Profil.png" alt="logoprofil" >
+                </button>
+                <button style="background:none;border:none;">
+                    <img class="m-logo2" src=image/Bell.png alt="logobell">
+                </button>
+                <form method="POST" action="logout.php">
+            <div><button type="submit" name="logout" class="butdeco">SE DECONNECTER</button></div></form>
+            </form>
+        </div>
+
+        </nav>
+        <div class="yellowbar">
+        </div>
+    </header>
+
+
+    <p class="bienv"><b>BIENVENUE SUR STAGE XPLORER...</b></p>
+
+    <div class="cadrejaunerech">
+        <form method="post" action="handler.php">
+        <div class="Type">
+            <p class="trouveoffre">Vous cherchez...</p>
+            <select name="butrecherche">
+                <option value="roffre">Une offre</option>
+                <option value="rentreprise">Une entreprise</option>
+                <option value="retudiant">Un étudiant</option>
+                <option value="rpilote">Un pilote</option>
+            </select>
+        </div>
+        <div class="Type">
+            <p class="trouveoffre">Competence :</p>
+            <input type="search" name=competence class="input"/>
+        </div>
+
+        <div class="Type">
+            <p class="trouveoffre">Ville :</p>
+            <input type="search" name=ville class="input"/>
+        </div>
+
+        <div class="Type">
+        <p class="trouveoffre">Entreprise :</p>
+        <input type="search" name=entreprisee class="input"/>
+        </div>
+
+        <div class="Type">
+            <p class="trouveoffre">Durée :</p>
+            
+            <div>
+                <select name="duree">
+                    <option value=1>-2 mois</option>
+                    <option value=2>2 à 4 mois</option>
+                    <option value=3>4 à 6 mois</option>
+                    <option value=4>+6 mois</option>
+                </select>
+            </div>
+        </div>
+        <div class="Type">
+            <p class="trouveoffre">Publication :</p>
+            <div>
+                <select name="publication">
+                    <option value=1>+ Récentes</option>
+                    <option value=(-1)>+ Anciennes</option>
+                </select>
+            </div>
+        </div>
+        <div class="Type">
+            <p class="trouveoffre">Prénom :</p>
+            <input type="search" name="prenom_recherché" class="input"/>
+        </div>
+        <div class="Type">
+            <p class="trouveoffre">Nom :</p>
+            <input type="search" name="nom_recherché" class="input"/>
+        </div>
+    </div> 
+    <section style="align-items: center;text-align: center;">
+    <button class="buttonsub" type="submit" name="action" value="rechercher"><b>Rechercher</b></button></section>
+
+    <?php
+    if (isset($_SESSION['user_id'])) {
+    $id_utilisateur = $_SESSION['user_id'];
+    
+    // Récupération de la valeur de "ID_Role" à partir de la base de données
+    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_utilisateur);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $id_role = null;
+
+    if ($result->num_rows > 0) 
+    {
+        // Récupération de la première ligne de résultat
+        $ligne = $result->fetch_assoc();
+        $id_role = $ligne["ID_Role"];
+    }
+    
+    // Vérifier si $id_role est défini et afficher les boutons en conséquence
+    if (isset($id_role) && ($id_role == 1 || $id_role == 2)) 
+    {
+        // Affichage des deux boutons si l'utilisateur a le rôle 1 ou 2
+        echo '<button class="buttonsub" type="submit" name="action" value="compte"><b>+ Compte</b></button>
+            <button class="buttonsub" type="submit" name="action" value="entreprise"><b>+ Entreprise</b></button>
+            <button class="buttonsub" type="submit" name="action" value="offre"><b>+ Offre</b></button>';
+    }
+        ?>
+                <form method="POST" action="logout.php">
+            <div><button type="submit" name="logout" class="buttonsub">SE DECONNECTER</button></div>
+        </form>
+    </section>
+    </form> 
+</body>
+
+<footer class="footer">
+<div class="flex">
+    <div class="margin" class="domaine" class="flex"> 
+        <p class="titre" class="pfooter">DOMAINES</p>
+        <p class="pfooter">BTP</p>
+        <p class="pfooter">Industrie</p>
+        <p class="pfooter">RH & Management</p>
+        <p class="pfooter">Informatique & Numérique</p>
+    </div>
+    <div class="margin" class="information" class="flex">
+        <p class="titre" class="pfooter">INFORMATIONS</p>
+        <p class="pfooter"><a href="Mentions légales et Politique de confidentialité.html">Politique de confidentialitées</a></p>
+        <p class="pfooter"><a href="Mentions légales et Politique de confidentialité.html">Mentions légales</a></p>
+        <p class="pfooter"><a href="CGU.html">CGU</a></p>
+    </div>
+    <div class="margin" >
+    <p class="titre" class="pfooter">L'ACTUALITÉ </p>
+    <div class="center"><a class="plink" href="https://www.linkedin.com/school/cesi-officiel/">Linkdin</a></div>
+    <div class="center"><a class="plink" href="https://mobile.twitter.com/cesi_officiel">Twitter</a></div>
+    <div class="center"><a class="plink" href="https://m.facebook.com/CESIingenieurs/events/">Facebook</a></div>
+    <div class="center"><a class="plink" href="https://www.instagram.com/cesi_officiel/?hl=fr">Instagram</a></div>
+    <div class="center"><a class="plink" href="https://www.youtube.com/channel/UCWanyqUivV6rjbTABGFI8pA">Youtube</a></div>
+    </div>
+
+</div>
+</footer>
+</html>
