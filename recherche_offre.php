@@ -34,6 +34,8 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $offre_id = $row['ID_Offre'];
+        echo '<a href="Page présentation offre.php?id=' . urlencode($offre_id) . '" style="text-decoration: none; color: inherit;">';
         echo "/////////////////////////////////////////////////////////////// " . "<br>";
         echo "Nature du poste : " . $row['Competence'] . "<br>";
         echo "Entreprise : " . $row['Nom'] . "<br>";
@@ -42,6 +44,7 @@ if ($result->num_rows > 0) {
         echo "Nombre de places : " . $row['Nbr_Places_Offre'] . "<br>";
         echo "Base de rémunération : " . $row['Remuneration_Offre'] . "<br>";
         echo "Durée : " . $row['Duree_offre'] . "<br><br>";
+        echo '</a>';
     }
 } else {
     echo "Aucune offre trouvée.";
