@@ -1,3 +1,9 @@
+<?php
+require_once 'data_base_connexion.php';
+$nameEnterprise = isset($_POST['entreprise']) ? $_POST['entreprise'] : '';
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,7 +35,7 @@
     <main>
         <section style="align-items: center;text-align: center;">
                 <div class="text">
-                    <h1>Nom Entreprise</h1>
+                    <h1><?php echo $nameEnterprise ?></h1>
                 </div>
             <div class="profil">
                 <img src="./image/Profil.png" class="phprof" alt="profil"/>

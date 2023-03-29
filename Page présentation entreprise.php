@@ -163,7 +163,8 @@ if ($result3->num_rows > 0) {
         <form action="delete_entreprise.php" method="get">
                 <button class="buttonsub" type="submit"><b>Supprimer</b></button>
             </form>
-            <form action="Page modification entreprise.html" method="get">
+            <form action="Page modification entreprise.php" method="post">
+                <input type="hidden" name="entreprise" value="<?php echo htmlspecialchars($nameEnterprise); ?>">
                 <button class="buttonsub" type="submit"><b>Modifier</b></button>
             </form>
         </section>
