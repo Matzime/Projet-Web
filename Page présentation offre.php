@@ -109,7 +109,7 @@ if ($result->num_rows > 0) {
         <form action="delete_job.php">
             <button class="buttonsub" type="submit"><b>Supprimer</b></button>
         </form> 
-        <form action="update_job.php">
+        <form action="Page modification offre.html">
             <button class="buttonsub" type="submit"><b>Modifier</b></button>
         </form> 
         </section>

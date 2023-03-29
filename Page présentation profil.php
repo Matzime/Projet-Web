@@ -95,7 +95,7 @@ if ($result->num_rows > 0) {
             <form action="delete_profil.php">
                 <button class="buttonsub" type="submit"><b>Supprimer</b></button>
             </form> 
-            <form action="update_profil.php">
+            <form action="Page modification profil.html">
                 <button class="buttonsub" type="submit"><b>Modifier</b></button>
             </form> 
         </section>

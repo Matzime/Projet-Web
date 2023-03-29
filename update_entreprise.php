@@ -3,13 +3,14 @@ require_once 'data_base_connexion.php';
 session_start();
 
 // Récupérer les données du formulaire d'inscription
-$nom_entreprise = $_COOKIE['nom_entreprise'];
-$secteur = $_POST['secteur_act'];
-$confiance_pilote = $_POST['confiance_pilote'];
+$nom_entreprise = 'Astraga';
+$secteur = 'BTP';
+$confiance_pilote = '8523';
+
 
 
 //Récupération, décomposition et validation de l'adresse
-$adresse = urlencode($_POST['adresse']); // Encodage de l'adresse pour la requête
+$adresse = urlencode('7 Rue De Létoile du matin Saint-Nazaire 44380'); // Encodage de l'adresse pour la requête
 $apiKey = 'f7506853d19a4b5e9fa3382af20257f8'; 
 
 // Effectuer une requête HTTP vers l'API Geocoding
@@ -33,12 +34,40 @@ if (isset($responseData['results'][0])) {
     echo "Adresse introuvable. Veuillez vérifier l'adresse saisie.";
 }
 
+// Récupérer l'ID de l'entreprise
+$sql4 = "SELECT ID_Entreprise FROM entreprise WHERE nom LIKE CONCAT('%', ?, '%')";
+$stmt4 = $conn->prepare($sql4);
+$stmt4->bind_param('s', $nom_entreprise);
+$stmt4->execute();
+$result= $stmt4->get_result();
+
+if ($result->num_rows > 0) 
+{
+    $row = $result->fetch_assoc();
+    $ID_entreprise = $row['ID_Entreprise'];
+    var_dump($ID_entreprise);
+}
+
+
 // Préparer la requête SQL pour ajouter l'entreprise et son adresse
-// Première requête SQL
-$sql1 = "UPDATE adresse SET Num_rue=?, Nom_rue=?, Nom_ville=?, CP_Ville=?
-WHERE ID_Adresse='$ID_Adresse')";
+// Récupérer l'ID de l'adresse
+$sql5 = "SELECT ID_Adresse FROM entreprise WHERE id_entreprise =?";
+$stmt5 = $conn->prepare($sql5);
+$stmt5->bind_param('i', $ID_entreprise);
+$stmt5->execute();
+$result= $stmt5->get_result();
+
+if ($result->num_rows > 0) 
+{
+    $row = $result->fetch_assoc();
+    $ID_adresse= $row['ID_Adresse'];
+    var_dump($ID_adresse);
+}
+
+// Update adresse
+$sql1 = "UPDATE adresse SET Num_rue=?, Nom_rue=?, Nom_ville=?, CP_Ville=? WHERE ID_Adresse=?";
 $stmt1 = $conn->prepare($sql1);
-$stmt1->bind_param('issii', $numero, $rue, $ville, $code_postal, $ID_Adresse);
+$stmt1->bind_param('issii', $numero, $rue, $ville, $code_postal, $ID_adresse);
 
 if ($stmt1->execute()) {
     echo "Adresse modifié avec succès.";
@@ -47,7 +76,7 @@ if ($stmt1->execute()) {
 }
 $stmt1->close();
 
-//Secteur d'activité (semblable à compétence), comparé pour voir si la competence existe déjà ou non
+// Récupérer ID Compétence
 $stmt = $conn->prepare("SELECT ID_Competence, Competence FROM competence WHERE Competence LIKE CONCAT('%', ?, '%')");
 $stmt->bind_param("s", $secteur);
 $stmt->execute();
@@ -65,7 +94,7 @@ if ($result->num_rows > 0) {
     $ID_Competence = $stmt->insert_id;
 }
 
-// Modification de l'entreprise
+// modification de l'entreprise
 $sql2 = "UPDATE entreprise SET ID_Competence=?, ID_Adresse=?
 WHERE ID_Entreprise=?";
 $stmt2 = $conn->prepare($sql2);
@@ -78,16 +107,14 @@ if ($stmt2->execute()) {
 }
 $stmt2->close();
 
-
-
-// insertion evaluation
+// modification evaluation
 $sql3 = "UPDATE evaluer SET ID_Utilisateur=?, Evaluation=?
 WHERE ID_Entreprise=?";
 $stmt3 = $conn->prepare($sql3);
 $stmt3->bind_param('iii', $userID, $confiance_pilote, $ID_entreprise);
 
 if ($stmt3->execute()) {
-    echo "Evalutation ajouté avec succès.";
+    echo "Evalutation modifié avec succès.";
 } else {
     echo "Une erreur est survenue lors de l'ajout de l'évaluation : " . $conn->error;
 }
