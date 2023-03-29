@@ -36,7 +36,7 @@ if (isset($_POST['action'])) {
                 $stmt3->close();
 
                 if (($role == 'Etudiant' && $but == "retudiant") || ($role == 'Pilote' && $but == "rpilote")) {
-                    header("Location: Page présentation profil.html?nom_recherché=" . urlencode($nom_recherché)."&prenom_recherché=".urlencode($prenom_recherché)."&role=".urlencode($role));
+                    header("Location: Page présentation profil.php?nom_recherché=" . urlencode($nom_recherché)."&prenom_recherché=".urlencode($prenom_recherché)."&role=".urlencode($role));
                     exit();
                 } elseif ($role == 'Etudiant' && $but == "rpilote") {
                     header("Location: accueil.html");

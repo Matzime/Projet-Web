@@ -1,9 +1,11 @@
 <?php
 require_once 'data_base_connexion.php';
-$ID_Offre = isset($_GET['ID_Offre']) ? $_GET['ID_Offre'] : 'Offre';
+// Démarrage de la session
+session_start();
+$ID_Offre = isset($_GET['offre_id']) ? $_GET['offre_id'] : 'Offre';
+echo $ID_Offre;
 
-
-$sql = "SELECT *
+$sql = "SELECT *, entreprise.Nom AS Nom_Entreprise
 FROM entreprise
 JOIN adresse ON entreprise.ID_Adresse = adresse.ID_Adresse
 JOIN offre ON offre.ID_Entreprise = entreprise.ID_Entreprise
@@ -15,16 +17,21 @@ WHERE
 
 $result = $conn->query($sql);
 
+
 if ($result->num_rows > 0) {
-    $nomOffre = $row['Nom_Offre'];
-    $enterprise = $row['entreprise.Nom'];
-    $money = $row['Remuneration_Offre'];
-    $address = $row['Nom_Ville'];
-    $period = $row['Duree_offre'];
-    $datePublication = $row['Date_Offre'];
-    $seats = $row['Nbr_Places_Offre'];
-    $skill = $row['Competence'];
+    while ($row = $result->fetch_assoc()) {
+        $nomOffre = $row['Nom_Offre'];
+        $enterprise = $row['Nom_Entreprise'];
+        $money = $row['Remuneration_Offre'];
+        $address = $row['Nom_Ville'];
+        $period = $row['Duree_offre'];
+        $datePublication = $row['Date_Offre'];
+        $seats = $row['Nbr_Places_Offre'];
+        $skill = $row['Competence'];
+    }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +91,7 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </section>
-        <form action="wishlist.php">
+        <form action="add_wishlist.php">
                 <div class="wishlist"><h4>Mettre cette offre dans votre wish-list :</h4> 
                 <button class="buttonsub3" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
             </div>
@@ -102,14 +109,38 @@ if ($result->num_rows > 0) {
                 <button class="buttonsub" type="submit"><b>Envoyer</b></button>
             </form>
         </section>
-        <section style="align-items: center;text-align: center;">      
-        <form action="delete_job.php">
-            <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-        </form> 
-        <form action="update_job.php">
-            <button class="buttonsub" type="submit"><b>Modifier</b></button>
-        </form> 
-        </section>
+        <?php
+
+
+
+if (isset($_SESSION['user_id'])) {
+    $id_utilisateur = $_SESSION['user_id'];
+    
+    // Récupération de la valeur de "ID_Role" à partir de la base de données
+    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_utilisateur);
+    $stmt->execute();
+    $id_role= $stmt->get_result();
+
+    // Vérification du résultat de la requête
+    if ($id_role->num_rows > 0) 
+    {
+        // Récupération de la première ligne de résultat
+        $ligne = $id_role->fetch_assoc();
+        $id_role = $ligne["ID_Role"];
+
+        // Affichage des boutons en fonction de la valeur de "ID_Role"
+        if ($id_role == 1 || $id_role == 2) {
+            // Affichage des deux boutons si l'utilisateur a le rôle 1
+            echo '<section style="align-items: center;text-align: center;">
+            <form action="delete_job.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>
+            <form action="Page modification offre.html"><button class="buttonsub" type="submit"><b>Modifier</b></button>
+            </form></section>';
+        }
+    }
+}
+        ?>
     </main>
     <footer class="footer">
         <div class="flex">
