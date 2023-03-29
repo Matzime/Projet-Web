@@ -28,6 +28,8 @@ if ($result->num_rows > 0) {
         $skill = $row['Competence'];
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +89,7 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </section>
-        <form action="wishlist.php">
+        <form action="add_wishlist.php">
                 <div class="wishlist"><h4>Mettre cette offre dans votre wish-list :</h4> 
                 <button class="buttonsub3" type="submit"><img src="./image/heart.png" alt="mail" class="png" /></button>
             </div>
