@@ -16,10 +16,10 @@ if ($result->num_rows > 0) {
     $promo = $row['Promo'];
     $mail = $row['Mail'];
     $campus = $row['Centre'];
-} else {
+} /* else {
     header("Location: accueil.html");
     exit();
-}
+} */
 
 
 ?>
@@ -91,14 +91,61 @@ if ($result->num_rows > 0) {
                 </form>
             </div>
         </section> -->
-        <section style="align-items: center;text-align: center;">        
-            <form action="delete_profil.php">
-                <button class="buttonsub" type="submit"><b>Supprimer</b></button>
-            </form> 
-            <form action="Page modification profil.html">
-                <button class="buttonsub" type="submit"><b>Modifier</b></button>
-            </form> 
-        </section>
+        <?php
+if (isset($_SESSION['user_id'])) {
+    $id_utilisateur = $_SESSION['user_id'];
+    
+    // Récupération de la valeur de "ID_Role" de l'utilisateur à partir de la base de données
+    $sql = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_utilisateur);
+    $stmt->execute();
+    $id_role= $stmt->get_result();
+
+    // Récupération de la valeur de "ID_Utilisateur" du la page profil à partir de la base de données
+    $sql1 = "SELECT ID_utilisateur FROM utilisateur WHERE prenom LIKE CONCAT('%', ?, '%') AND nom LIKE CONCAT('%', ?, '%')";
+    $stmt1 = $conn->prepare($sql1);
+    $stmt1->bind_param('ss', $fstName, $sndName);
+    $stmt1->execute();
+    $id_profil= $stmt1->get_result();
+
+    // Récupération de la valeur de "ID_Role" du la page profil à partir de la base de données
+    $sql2 = "SELECT ID_Role FROM utilisateur WHERE ID_Utilisateur = ?";
+    $stmt2 = $conn->prepare($sql2);
+    $stmt2->bind_param('i', $id_profil);
+    $stmt2->execute();
+    $id_role_profil= $stmt->get_result();
+
+    // Vérification du résultat de la requête
+    if ($id_role->num_rows > 0) 
+    {
+        // Récupération de la première ligne de résultat
+        $ligne = $id_role->fetch_assoc();
+        $id_role = $ligne["ID_Role"];
+
+        // Affichage des boutons en fonction de la valeur de "ID_Role"
+        if ($id_role == 1) 
+        {
+            // Affichage des deux boutons si l'utilisateur a le rôle 1
+
+            echo '<section style="align-items: center;text-align: center;">
+            <form action="delete_profil.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>
+            <form action="Page modification profil.html"><button class="buttonsub" type="submit"><b>Modifier</b></button>
+            </form></section>';
+        }
+        if ($id_role == 2) 
+        {
+            if ($id_role_profil == 3)
+            // Affichage des deux boutons si l'utilisateur a le rôle 1
+
+            echo '<section style="align-items: center;text-align: center;">
+            <form action="delete_profil.php"><button class="buttonsub" type="submit"><b>Supprimer</b></button></form>
+            <form action="Page modification profil.html"><button class="buttonsub" type="submit"><b>Modifier</b></button>
+            </form></section>';
+        }
+    }
+}
+        ?>
     </main>
     
     <footer class="footer">
